@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#serverless
+# package directories
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# esbuild directories
+.esbuild
