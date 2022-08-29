@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "cd sl/ && serverless client deploy --no-config-change --no-policy-change --no-cors-change && cd .."
+    "deploy": "serverless client deploy --no-config-change --no-policy-change --no-cors-change"
   },
   "eslintConfig": {
     "extends": [

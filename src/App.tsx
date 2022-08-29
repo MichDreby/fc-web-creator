@@ -13,7 +13,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Welcome to FC App creator!
+          Welcome to FC App creator! Yo! Yo! Yo!
         </a>
         <p>DrebyDigitals Inc.</p>
       </header>
