@@ -15,14 +15,21 @@
     "react-scripts": "5.0.1",
     "serverless-finch": "^4.0.0",
     "typescript": "^4.8.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "serverless-single-page-app-plugin": "./serverless-single-page-app-plugin"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "serverless client deploy --no-config-change --no-policy-change --no-cors-change"
+
+    "client:deploy": "serverless client deploy --no-config-change --no-policy-change --no-cors-change --no-confirm",
+    "client:build:deploy": "yarn build && yarn client:deploy",
+    "cloudfront:setup": "sls deploy",
+    "cloudfront:invalidateCache": "sls invalidateCloudFrontCache",
+    "cloudfront:build:deploy": "yarn client:build:deploy && yarn cloudfront:invalidateCache",
+    "cloudfront:update:build:deploy": "yarn cloudfront:setup && yarn cloudfront:build:deploy"
   },
   "eslintConfig": {
     "extends": [

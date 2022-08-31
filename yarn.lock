@@ -8656,6 +8656,9 @@ serverless-finch@^4.0.0:
     mime "^3.0.0"
     minimatch "^5.0.1"
 
+serverless-single-page-app-plugin@./serverless-single-page-app-plugin:
+  version "1.0.0"
+
 setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
