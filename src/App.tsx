@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Welcome to FC App creator! https is here! yeeeah!
+          {`Welcome to FC App creator! https is here! yeeeah!
+            Updated serverless to TS config3`}
         </a>
         <p>DrebyDigitals Inc.</p>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
