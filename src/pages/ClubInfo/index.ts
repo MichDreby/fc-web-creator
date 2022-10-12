@@ -1,0 +1,1 @@
+export { ClubInfo } from './ClubInfo'
