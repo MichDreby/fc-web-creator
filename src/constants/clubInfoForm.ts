@@ -1,0 +1,15 @@
+export enum CLUB_INFO_FORM_VALUES {
+  NAME = 'NAME',
+  VENUE = 'VENUE',
+  FOUNDED = 'FOUNDED',
+  CLUB_COLORS = 'CLUB_COLORS',
+  WEBSITE = 'WEBSITE',
+}
+
+export interface IClubInfoFormValues {
+  [CLUB_INFO_FORM_VALUES.NAME]: string
+  [CLUB_INFO_FORM_VALUES.VENUE]: string
+  [CLUB_INFO_FORM_VALUES.CLUB_COLORS]: string
+  [CLUB_INFO_FORM_VALUES.FOUNDED]: string
+  [CLUB_INFO_FORM_VALUES.WEBSITE]: string
+}
