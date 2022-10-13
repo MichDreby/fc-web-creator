@@ -1,16 +1,18 @@
 .container {
   display: flex;
   justify-content: center;
-  /* border: solid 1px red; */
+}
+.contentContainer {
+  width: 720px;
+  padding: 40px 0px;
+  text-align: center;
 }
 .formContainer {
-  padding: 40px 0px;
-  width: 720px;
-  /* border: 1px solid; */
+  margin-top: 50px;
 }
 .inputContainer {
   margin-bottom: 20px;
 }
 .buttonContainer {
-  margin-top: 30px;
+  margin-top: 50px;
 }
