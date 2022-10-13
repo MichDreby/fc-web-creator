@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 
-import { Button, Input } from '../../components'
+import { Button, Input } from '@components'
 
 import styles from './styles.module.css'
 
