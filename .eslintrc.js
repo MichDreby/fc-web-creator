@@ -41,12 +41,13 @@ module.exports = {
     ],
     'object-property-newline': ['error'],
     'no-console': [
-      'error',
+      'warn',
       {
         allow: ['warn', 'error'],
       },
     ],
     '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-empty-function': ['warn'],
   },
 
   settings: {
