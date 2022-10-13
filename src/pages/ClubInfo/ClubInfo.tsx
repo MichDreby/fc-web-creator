@@ -1,5 +1,7 @@
 import React from 'react'
-import { Formik, Field, Form } from 'formik'
+import { Formik, Form } from 'formik'
+
+import { Button, Input } from '../../components'
 
 import styles from './styles.module.css'
 
@@ -38,48 +40,42 @@ export const ClubInfo: React.FC = React.memo(() => {
         }}
       >
         <Form>
-          <div>
-            <label htmlFor={FORM_VALUES.NAME}>Name</label>
-            <Field
-              id={FORM_VALUES.NAME}
-              name={FORM_VALUES.NAME}
-              placeholder=""
+          <div className={styles.formContainer}>
+            <Input
+              fieldId={FORM_VALUES.NAME}
+              label={'Name'}
+              placeholder={'Name'}
+              containerStyle={styles.inputContainer}
+            />
+            <Input
+              fieldId={FORM_VALUES.FOUNDED}
+              label={'Founded'}
+              placeholder={'Founded'}
+              containerStyle={styles.inputContainer}
+            />
+            <Input
+              fieldId={FORM_VALUES.VENUE}
+              label={'Venue'}
+              placeholder={'Venue'}
+              containerStyle={styles.inputContainer}
+            />
+            <Input
+              fieldId={FORM_VALUES.CLUB_COLORS}
+              label={'Colors'}
+              placeholder={'Colors'}
+              containerStyle={styles.inputContainer}
+            />
+            <Input
+              fieldId={FORM_VALUES.WEBSITE}
+              label={'Website'}
+              placeholder={'Website'}
+            />
+            <Button
+              onClick={() => {}}
+              label={'Submit'}
+              containerStyle={styles.buttonContainer}
             />
           </div>
-          <div>
-            <label htmlFor={FORM_VALUES.VENUE}>Venue</label>
-            <Field
-              id={FORM_VALUES.VENUE}
-              name={FORM_VALUES.VENUE}
-              placeholder=""
-            />
-          </div>
-          <div>
-            <label htmlFor={FORM_VALUES.FOUNDED}>Founded</label>
-            <Field
-              id={FORM_VALUES.FOUNDED}
-              name={FORM_VALUES.FOUNDED}
-              placeholder=""
-            />
-          </div>
-          <div>
-            <label htmlFor={FORM_VALUES.CLUB_COLORS}>Club colors</label>
-            <Field
-              id={FORM_VALUES.CLUB_COLORS}
-              name={FORM_VALUES.CLUB_COLORS}
-              placeholder=""
-            />
-          </div>
-          <div>
-            <label htmlFor={FORM_VALUES.WEBSITE}>Website</label>
-            <Field
-              id={FORM_VALUES.WEBSITE}
-              name={FORM_VALUES.WEBSITE}
-              placeholder=""
-            />
-          </div>
-
-          <button type="submit">Submit</button>
         </Form>
       </Formik>
     </div>

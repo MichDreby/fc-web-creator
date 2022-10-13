@@ -1,0 +1,13 @@
+.container {
+  font-size: 18px;
+  border-radius: 12px;
+  padding: 16px 8px;
+  border: 0;
+  background-color:#0071e3;
+  min-width: 100px;
+  width: 100%;
+}
+.label {
+  font-size: 18px;
+  color: #fff;
+}

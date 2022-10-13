@@ -1,3 +1,16 @@
 .container {
-  
+  display: flex;
+  justify-content: center;
+  /* border: solid 1px red; */
+}
+.formContainer {
+  padding: 40px 0px;
+  width: 720px;
+  /* border: 1px solid; */
+}
+.inputContainer {
+  margin-bottom: 20px;
+}
+.buttonContainer {
+  margin-top: 30px;
 }
