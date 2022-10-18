@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
 import { Button, Input } from '@components'
-import { reactLogo } from '@assets'
+import { ballLogo } from '@assets'
 import { ClubInfoFormValues } from '@types'
 
 import styles from './styles.module.css'
@@ -12,7 +12,7 @@ export const ClubInfo: React.FC = React.memo(() => {
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
-        <img src={reactLogo} className={styles.appLogo} alt="logo" />
+        <img src={ballLogo} className={styles.appLogo} alt="logo" />
 
         <h1>Football Club information</h1>
 
