@@ -1,4 +1,4 @@
-export enum CLUB_INFO_FORM_VALUES {
+export enum CLUB_INFO_FORM {
   NAME = 'NAME',
   VENUE = 'VENUE',
   FOUNDED = 'FOUNDED',
@@ -6,10 +6,10 @@ export enum CLUB_INFO_FORM_VALUES {
   WEBSITE = 'WEBSITE',
 }
 
-export interface IClubInfoFormValues {
-  [CLUB_INFO_FORM_VALUES.NAME]: string
-  [CLUB_INFO_FORM_VALUES.VENUE]: string
-  [CLUB_INFO_FORM_VALUES.CLUB_COLORS]: string
-  [CLUB_INFO_FORM_VALUES.FOUNDED]: string
-  [CLUB_INFO_FORM_VALUES.WEBSITE]: string
+export interface IClubInfoForm {
+  [CLUB_INFO_FORM.NAME]: string
+  [CLUB_INFO_FORM.VENUE]: string
+  [CLUB_INFO_FORM.CLUB_COLORS]: string
+  [CLUB_INFO_FORM.FOUNDED]: string
+  [CLUB_INFO_FORM.WEBSITE]: string
 }
