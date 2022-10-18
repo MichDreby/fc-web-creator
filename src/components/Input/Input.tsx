@@ -2,12 +2,13 @@ import React from 'react'
 import { Field, useFormikContext } from 'formik'
 import classNames from 'classnames'
 
-import { CLUB_INFO_FORM, IClubInfoForm } from '@constants'
+import { CLUB_INFO_FORM_FIELDS } from '@constants'
+import { ClubInfoFormValues } from '@types'
 
 import styles from './styles.module.css'
 
 interface IProps {
-  fieldId: CLUB_INFO_FORM
+  fieldId: CLUB_INFO_FORM_FIELDS
   label: string
   containerStyle?: string
   placeholder?: string
@@ -15,7 +16,7 @@ interface IProps {
 
 export const Input: React.FC<IProps> = React.memo(
   ({ fieldId, label, containerStyle, placeholder = '' }) => {
-    const { values } = useFormikContext<IClubInfoForm>()
+    const { values } = useFormikContext<ClubInfoFormValues>()
 
     return (
       <div className={classNames(styles.container, containerStyle ?? null)}>

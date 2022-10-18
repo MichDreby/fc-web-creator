@@ -1,8 +1,10 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 
-import { CLUB_INFO_FORM, IClubInfoForm } from '@constants'
+import { CLUB_INFO_FORM_FIELDS } from '@constants'
 import { Button, Input } from '@components'
+import { reactLogo } from '@assets'
+import { ClubInfoFormValues } from '@types'
 
 import styles from './styles.module.css'
 
@@ -10,48 +12,50 @@ export const ClubInfo: React.FC = React.memo(() => {
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
+        <img src={reactLogo} className={styles.appLogo} alt="logo" />
+
         <h1>Football Club information</h1>
 
         <div className={styles.formContainer}>
           <Formik
             initialValues={{
-              [CLUB_INFO_FORM.NAME]: '',
-              [CLUB_INFO_FORM.VENUE]: '',
-              [CLUB_INFO_FORM.FOUNDED]: '',
-              [CLUB_INFO_FORM.CLUB_COLORS]: '',
-              [CLUB_INFO_FORM.WEBSITE]: '',
+              [CLUB_INFO_FORM_FIELDS.NAME]: '',
+              [CLUB_INFO_FORM_FIELDS.VENUE]: '',
+              [CLUB_INFO_FORM_FIELDS.FOUNDED]: '',
+              [CLUB_INFO_FORM_FIELDS.CLUB_COLORS]: '',
+              [CLUB_INFO_FORM_FIELDS.WEBSITE]: '',
             }}
-            onSubmit={(values: IClubInfoForm) => {
+            onSubmit={(values: ClubInfoFormValues) => {
               console.log('******\n', 'values', values)
             }}
           >
             <Form>
               <Input
-                fieldId={CLUB_INFO_FORM.NAME}
+                fieldId={CLUB_INFO_FORM_FIELDS.NAME}
                 label={'Name'}
                 placeholder={'Name'}
                 containerStyle={styles.inputContainer}
               />
               <Input
-                fieldId={CLUB_INFO_FORM.FOUNDED}
+                fieldId={CLUB_INFO_FORM_FIELDS.FOUNDED}
                 label={'Founded'}
                 placeholder={'Founded'}
                 containerStyle={styles.inputContainer}
               />
               <Input
-                fieldId={CLUB_INFO_FORM.VENUE}
+                fieldId={CLUB_INFO_FORM_FIELDS.VENUE}
                 label={'Venue'}
                 placeholder={'Venue'}
                 containerStyle={styles.inputContainer}
               />
               <Input
-                fieldId={CLUB_INFO_FORM.CLUB_COLORS}
+                fieldId={CLUB_INFO_FORM_FIELDS.CLUB_COLORS}
                 label={'Colors'}
                 placeholder={'Colors'}
                 containerStyle={styles.inputContainer}
               />
               <Input
-                fieldId={CLUB_INFO_FORM.WEBSITE}
+                fieldId={CLUB_INFO_FORM_FIELDS.WEBSITE}
                 label={'Website'}
                 placeholder={'Website'}
               />
