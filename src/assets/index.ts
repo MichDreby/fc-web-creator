@@ -1,1 +1,1 @@
-export { default as ballLogo } from './logo.svg'
+export { default as ball } from './ball.svg'
