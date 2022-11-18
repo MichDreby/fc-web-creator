@@ -1,12 +1,13 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'react'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
 
   rules: {
+    // import
     'import/order': [
       'error',
       {
@@ -29,6 +30,8 @@ module.exports = {
       },
     ],
     'import/newline-after-import': ['error'],
+
+    // object aligning
     'newline-before-return': ['error'],
     'object-curly-newline': [
       'error',
@@ -40,6 +43,16 @@ module.exports = {
       },
     ],
     'object-property-newline': ['error'],
+
+    // react
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+      },
+    ],
+
+    // other
     'no-console': [
       'warn',
       {

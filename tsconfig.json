@@ -7,7 +7,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -26,9 +26,12 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "sourceMap": true,
-    "outDir": "lib",
   },
-  "include": ["src/**/*.ts", "serverless.ts", "declarations.d.ts"],
+  "include": [
+    "src/**/*",
+    "serverless.ts",
+    "declarations.d.ts"
+  ],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",
@@ -36,8 +39,5 @@
     "_warmup/**/*",
     ".vscode/**/*",
     "build/**/*",
-  ],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  ]
 }
