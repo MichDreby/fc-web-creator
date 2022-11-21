@@ -1,1 +1,6 @@
 export * from './ClubInfo'
+export * from './Error'
+export * from './Profile'
+export * from './Root'
+export * from './Squad'
+export * from './Users'

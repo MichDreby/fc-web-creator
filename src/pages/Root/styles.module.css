@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  height: 100vh;
+  border: solid 1px red;
+}
+.navbarContainer {
+  width: 200px;
+  border: solid 1px green;
+}
+.contentContainer {
+  flex: 1;
+  border: solid 1px blue;
+}

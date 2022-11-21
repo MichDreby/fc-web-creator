@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
+import { RouterProvider } from 'react-router-dom'
 import './styles.css'
 
-import { ClubInfo } from './pages/ClubInfo'
+import { router } from './routing'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ClubInfo />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
