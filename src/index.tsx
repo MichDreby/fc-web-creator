@@ -8,22 +8,15 @@ import {
   faUsers,
   faCircleInfo,
   faPeopleArrows,
-  // faFutbol,
+  faFutbol,
 } from '@fortawesome/free-solid-svg-icons'
-import { faFutbol, faFutbolBall } from '@fortawesome/free-regular-svg-icons'
+// import { faFutbol, faFutbolBall } from '@fortawesome/free-regular-svg-icons'
 
 import './styles.css'
 
 import { router } from './routing'
 
-library.add(
-  faUser,
-  faUsers,
-  faCircleInfo,
-  faPeopleArrows,
-  faFutbol,
-  faFutbolBall,
-)
+library.add(faUser, faUsers, faCircleInfo, faPeopleArrows, faFutbol)
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
