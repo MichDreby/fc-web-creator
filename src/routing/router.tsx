@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: 'club_info',
+        path: 'info',
         element: <ClubInfo />,
       },
       {

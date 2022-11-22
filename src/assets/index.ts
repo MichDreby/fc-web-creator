@@ -1,1 +1,5 @@
 export { default as ball } from './ball.svg'
+export { default as users } from './users.svg'
+export { default as team } from './team.svg'
+export { default as profile } from './profile.svg'
+export { default as reactLogo } from './reactLogo.svg'
