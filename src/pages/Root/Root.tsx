@@ -1,8 +1,7 @@
-import { Link, Outlet } from 'react-router-dom'
-import { FC } from 'react'
+import { Outlet } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { NavbarItem } from '@components'
 
 import styles from './styles.module.css'
 
@@ -29,19 +28,4 @@ export const Root = () => (
       <Outlet />
     </div>
   </div>
-)
-
-interface NavbarItemProps {
-  path: string
-  label: string
-  iconName: IconProp
-}
-
-export const NavbarItem: FC<NavbarItemProps> = ({ path, label, iconName }) => (
-  <li className={styles.navbarItemContainer}>
-    <Link to={path} className={styles.link}>
-      <FontAwesomeIcon icon={iconName} className={styles.listItemIcon} />
-      {label}
-    </Link>
-  </li>
 )

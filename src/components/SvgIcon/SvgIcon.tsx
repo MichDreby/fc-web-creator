@@ -1,13 +1,15 @@
-import { FC } from 'react'
+// import { FC } from 'react'
 
-import * as icons from '@assets'
+// import * as icons from '@assets'
 
-import styles from './styles.module.css'
+// import styles from './styles.module.css'
 
-interface SvgIconProps {
-  name: string
-}
+// interface SvgIconProps {
+//   name: string
+// }
 
-export const SvgIcon: FC<SvgIconProps> = ({ name }) => (
-  <img src={icons[name]} className={styles.icon} alt="logo" />
-)
+// export const SvgIcon: FC<SvgIconProps> = ({ name }) => (
+//   <img src={icons[name]} className={styles.icon} alt="logo" />
+// )
+
+export const SvgIcon = () => null
