@@ -1,4 +1,4 @@
-import { logo, ball } from '@assets'
+import { logo } from '@assets'
 
 import styles from './styles.module.css'
 

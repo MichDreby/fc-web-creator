@@ -1,9 +1,9 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
+import classNames from 'classnames'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
-import { Button, Input } from '@components'
-import { ball } from '@assets'
+import { Input } from '@components'
 import { ClubInfoFormValues } from '@types'
 
 import styles from './styles.module.css'
@@ -11,11 +11,11 @@ import styles from './styles.module.css'
 export const ClubInfo: React.FC = React.memo(() => {
   return (
     <div className={styles.container}>
-      <div className={styles.header} />
+      <div className={styles.header}>
+        <h2 className={styles.headerLabel}>Football club info</h2>
+      </div>
       <div className={styles.contentContainer}>
-        <div className={styles.leftContainer} />
-        <div className={styles.rightContainer} />
-        {/* <div className={styles.formContainer}>
+        <div className={styles.leftContainer}>
           <Formik
             initialValues={{
               [CLUB_INFO_FORM_FIELDS.NAME]: '',
@@ -28,39 +28,53 @@ export const ClubInfo: React.FC = React.memo(() => {
               console.log('******\n', 'values', values)
             }}
           >
-            <Form>
-              <Input
-                fieldId={CLUB_INFO_FORM_FIELDS.NAME}
-                label={'Name'}
-                placeholder={'Name'}
-                containerStyle={styles.inputContainer}
-              />
-              <Input
-                fieldId={CLUB_INFO_FORM_FIELDS.FOUNDED}
-                label={'Founded'}
-                placeholder={'Founded'}
-                containerStyle={styles.inputContainer}
-              />
-              <Input
-                fieldId={CLUB_INFO_FORM_FIELDS.VENUE}
-                label={'Venue'}
-                placeholder={'Venue'}
-                containerStyle={styles.inputContainer}
-              />
-              <Input
-                fieldId={CLUB_INFO_FORM_FIELDS.CLUB_COLORS}
-                label={'Colors'}
-                placeholder={'Colors'}
-                containerStyle={styles.inputContainer}
-              />
-              <Input
-                fieldId={CLUB_INFO_FORM_FIELDS.WEBSITE}
-                label={'Website'}
-                placeholder={'Website'}
-              />
+            <Form className={styles.formContainer}>
+              <div className={styles.formColumn}>
+                <Input
+                  fieldId={CLUB_INFO_FORM_FIELDS.NAME}
+                  label={'Name'}
+                  placeholder={'FC Barcelona'}
+                  containerStyle={styles.inputContainer}
+                  description={'Some description for this field'}
+                />
+
+                <Input
+                  fieldId={CLUB_INFO_FORM_FIELDS.VENUE}
+                  label={'Venue'}
+                  placeholder={'Camp Nou'}
+                  containerStyle={styles.inputContainer}
+                  description={'Some description for this field'}
+                />
+                <Input
+                  fieldId={CLUB_INFO_FORM_FIELDS.WEBSITE}
+                  label={'Website'}
+                  placeholder={'https://www.fcbarcelona.com/'}
+                  description={'Some description for this field'}
+                />
+              </div>
+
+              <div
+                className={classNames(styles.formColumn, styles.formColumnLast)}
+              >
+                <Input
+                  fieldId={CLUB_INFO_FORM_FIELDS.FOUNDED}
+                  label={'Founded'}
+                  placeholder={'1898'}
+                  containerStyle={styles.inputContainer}
+                  description={'Some description for this field'}
+                />
+                <Input
+                  fieldId={CLUB_INFO_FORM_FIELDS.CLUB_COLORS}
+                  label={'Colors'}
+                  placeholder={'Colors'}
+                  containerStyle={styles.inputContainer}
+                  description={'Some description for this field'}
+                />
+              </div>
             </Form>
           </Formik>
-        </div> */}
+        </div>
+        <div className={styles.rightContainer} />
       </div>
     </div>
   )
