@@ -11,12 +11,11 @@ import styles from './styles.module.css'
 export const ClubInfo: React.FC = React.memo(() => {
   return (
     <div className={styles.container}>
+      <div className={styles.header} />
       <div className={styles.contentContainer}>
-        <img src={ball} className={styles.appLogo} alt="logo" />
-
-        <h1>Football Club information</h1>
-
-        <div className={styles.formContainer}>
+        <div className={styles.leftContainer} />
+        <div className={styles.rightContainer} />
+        {/* <div className={styles.formContainer}>
           <Formik
             initialValues={{
               [CLUB_INFO_FORM_FIELDS.NAME]: '',
@@ -59,14 +58,9 @@ export const ClubInfo: React.FC = React.memo(() => {
                 label={'Website'}
                 placeholder={'Website'}
               />
-              <Button
-                onClick={() => {}}
-                label={'Submit'}
-                containerStyle={styles.buttonContainer}
-              />
             </Form>
           </Formik>
-        </div>
+        </div> */}
       </div>
     </div>
   )

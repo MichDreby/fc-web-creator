@@ -1,12 +1,44 @@
 .container {
+  height: 100%;
   display: flex;
-  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+  background-color: #f7f7f7;
+
+  border: 3px solid red;
+}
+.header {
+  height: 80px;
+  background-color: #fff;
+
+  border: 3px solid orange;
 }
 .contentContainer {
-  width: 720px;
-  padding: 40px 0px;
-  text-align: center;
+  display: flex;
+  flex: 1;
+  margin: 15px;
+
+  border: 3px solid green;
 }
+.leftContainer {
+  flex: 1;
+  border-radius: 10px;
+  background-color: #fff;
+
+  border: 3px solid blue;
+}
+.rightContainer {
+  width: 380px;
+  height: 500px;
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+
+  border: 3px solid magenta;
+}
+
+
+
 .formContainer {
   margin-top: 50px;
 }
@@ -15,24 +47,4 @@
 }
 .buttonContainer {
   margin-top: 50px;
-}
-
-.appLogo {
-  height: 50px;
-  pointer-events: none;
-  margin-bottom: 20px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .appLogo {
-    animation: appLogo-spin infinite 5s linear;
-  }
-}
-@keyframes appLogo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

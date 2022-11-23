@@ -4,11 +4,12 @@
 }
 
 .navbarContainer {
-  width: 200px;
+  width: 340px;
   display: flex;
   flex-direction: column;
-  padding: 20px 10px;
-  background-color: #1b1c1e;
+  background-color: #fff;
+  position: relative;
+  padding: 30px 0px;
 }
 
 .contentContainer {
@@ -19,23 +20,43 @@
 .logoContainer {
   display: flex;
   align-items: center;
-  border-bottom: 0.01px #3b3b3b solid;
-  padding-bottom: 15px;
+  justify-content: center;
 }
+
 
 .logoLabel {
-  color: #ffffff;
+  font-family: 'Red Hat Text';
   font-weight: 700;
+  font-size: 26px;
+}
+.logRectangle {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(100, 100, 100, 0.1);
+  left: 95px;
+  position: absolute;
 }
 
-.logoIcon {
-  color: #ffffff;
-  height: 30px;
-  margin-right: 10px;
+.profileContainer {
+  margin-top: 60px;
+  text-align: center;
+}
+.profileImage {
+  border-radius: 50%;
+  height: 100px
+}
+.profileNameLabel {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 6px;
+}
+.profileTitleLabel {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .listContainer {
-  flex: 1;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  flex: 1 1;
+  margin-top: 170px;
+  padding: 0 30px;
 }

@@ -1,6 +1,5 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavbarItem } from '@components'
 
 import styles from './styles.module.css'
@@ -9,8 +8,19 @@ export const Root = () => (
   <div className={styles.container}>
     <nav className={styles.navbarContainer}>
       <div className={styles.logoContainer}>
-        <FontAwesomeIcon icon={'futbol'} className={styles.logoIcon} />
-        <span className={styles.logoLabel}>Football Club</span>
+        <span className={styles.logoLabel}>extremely</span>
+        <div className={styles.logRectangle} />
+      </div>
+      <div className={styles.profileContainer}>
+        <Link to={'/profile'}>
+          <img
+            src="https://ak.picdn.net/contributors/164575/avatars/thumb.jpg?t=5563986"
+            alt="profile"
+            className={styles.profileImage}
+          />
+          <p className={styles.profileNameLabel}>Mich Dreby</p>
+          <p className={styles.profileTitleLabel}>CEO</p>
+        </Link>
       </div>
 
       <ul className={styles.listContainer}>
@@ -18,10 +28,6 @@ export const Root = () => (
         <NavbarItem path={'squad'} label={'Squad'} iconName={'users'} />
         <NavbarItem path={'users'} label={'Users'} iconName={'people-arrows'} />
       </ul>
-
-      <div>
-        <NavbarItem path={'profile'} label={'Profile'} iconName={'user'} />
-      </div>
     </nav>
 
     <div className={styles.contentContainer}>

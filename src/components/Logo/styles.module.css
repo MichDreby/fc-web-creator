@@ -2,7 +2,6 @@
 .icon {
   height: 50px;
   pointer-events: none;
-  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
