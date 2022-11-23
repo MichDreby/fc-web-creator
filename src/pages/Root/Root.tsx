@@ -8,8 +8,10 @@ export const Root = () => (
   <div className={styles.container}>
     <nav className={styles.navbarContainer}>
       <div className={styles.logoContainer}>
-        <span className={styles.logoLabel}>extremely</span>
-        <div className={styles.logRectangle} />
+        <div className={styles.logo}>
+          <div className={styles.logRectangle} />
+          <span className={styles.logoLabel}>extremely</span>
+        </div>
       </div>
       <div className={styles.profileContainer}>
         <Link to={'/profile'}>

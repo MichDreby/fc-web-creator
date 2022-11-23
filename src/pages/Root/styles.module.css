@@ -4,7 +4,7 @@
 }
 
 .navbarContainer {
-  width: 340px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -14,16 +14,19 @@
 
 .contentContainer {
   flex: 1;
-  border: solid 1px blue;
+  border-left: solid 0.5px #dbdbdb;
 }
 
 .logoContainer {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .logoLabel {
   font-family: 'Red Hat Text';
   font-weight: 700;
@@ -33,7 +36,7 @@
   height: 40px;
   width: 40px;
   background-color: rgb(100, 100, 100, 0.1);
-  left: 95px;
+  left: -10px;
   position: absolute;
 }
 

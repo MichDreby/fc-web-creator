@@ -1,8 +1,8 @@
 .container {
-  height: 60px;
+  height: 52px;
   display: flex;
   align-items: stretch;
-  border-bottom: 1.4px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .link {
