@@ -17,6 +17,7 @@ export const NavbarItem: FC<NavbarItemProps> = ({ path, label, iconName }) => (
     <Link to={path} className={styles.link}>
       <FontAwesomeIcon icon={iconName} className={styles.icon} />
       {label}
+      <FontAwesomeIcon icon={'chevron-right'} className={styles.chevronIcon} />
     </Link>
   </li>
 )

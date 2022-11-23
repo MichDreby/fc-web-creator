@@ -9,6 +9,7 @@
   flex-direction: column;
   position: relative;
   padding: 30px 0px;
+  justify-content: space-between;
 }
 
 .contentContainer {
@@ -22,17 +23,15 @@
 }
 
 .profileContainer {
-  margin-top: 60px;
   text-align: center;
 }
 .profileImage {
   border-radius: 50%;
-  height: 100px
+  height: 60px
 }
 .profileNameLabel {
   font-weight: 600;
-  font-size: 18px;
-  margin-top: 6px;
+  font-size: 14px;
 }
 .profileTitleLabel {
   font-size: 14px;
@@ -40,7 +39,5 @@
 }
 
 .listContainer {
-  flex: 1 1;
-  margin-top: 170px;
   padding: 0 30px;
 }

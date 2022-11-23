@@ -10,6 +10,14 @@ export const Root = () => (
       <div className={styles.logoContainer}>
         <Logo />
       </div>
+
+      <ul className={styles.listContainer}>
+        <NavbarItem path={'info'} label={'Info'} iconName={'circle-info'} />
+        <NavbarItem path={'squad'} label={'Squad'} iconName={'users'} />
+        <NavbarItem path={'users'} label={'Users'} iconName={'people-arrows'} />
+        <NavbarItem path={'settings'} label={'Settings'} iconName={'gears'} />
+      </ul>
+
       <div className={styles.profileContainer}>
         <Link to={'/profile'}>
           <img
@@ -21,12 +29,6 @@ export const Root = () => (
           <p className={styles.profileTitleLabel}>CEO</p>
         </Link>
       </div>
-
-      <ul className={styles.listContainer}>
-        <NavbarItem path={'info'} label={'Info'} iconName={'circle-info'} />
-        <NavbarItem path={'squad'} label={'Squad'} iconName={'users'} />
-        <NavbarItem path={'users'} label={'Users'} iconName={'people-arrows'} />
-      </ul>
     </nav>
 
     <div className={styles.contentContainer}>
