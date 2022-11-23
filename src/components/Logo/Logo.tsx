@@ -1,5 +1,5 @@
-import { ball } from '@assets'
+import { logo, ball } from '@assets'
 
 import styles from './styles.module.css'
 
-export const Logo = () => <img src={ball} className={styles.icon} alt="logo" />
+export const Logo = () => <img src={logo} className={styles.icon} alt="logo" />

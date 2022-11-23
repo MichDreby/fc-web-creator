@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 
-import { NavbarItem } from '@components'
+import { Logo, NavbarItem } from '@components'
 
 import styles from './styles.module.css'
 
@@ -8,10 +8,7 @@ export const Root = () => (
   <div className={styles.container}>
     <nav className={styles.navbarContainer}>
       <div className={styles.logoContainer}>
-        <div className={styles.logo}>
-          <div className={styles.logRectangle} />
-          <span className={styles.logoLabel}>extremely</span>
-        </div>
+        <Logo />
       </div>
       <div className={styles.profileContainer}>
         <Link to={'/profile'}>
