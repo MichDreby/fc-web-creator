@@ -1,5 +1,5 @@
-import React from 'react'
-import { Field } from 'formik'
+import React, { useEffect } from 'react'
+import { Field, useFormikContext } from 'formik'
 import classNames from 'classnames'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
@@ -15,8 +15,28 @@ interface IProps {
 }
 
 export const Input: React.FC<IProps> = React.memo(
-  ({ fieldId, label, containerStyle, placeholder = '', description = '' }) => {
-    // const { values } = useFormikContext<ClubInfoFormValues>()
+  ({
+    fieldId,
+    label,
+    containerStyle,
+    placeholder = '',
+    description = '',
+    foo,
+  }) => {
+    const formikContext = useFormikContext()
+
+    useEffect(() => {
+      if (foo) {
+        const { values, setFieldValue } = formikContext
+
+        console.log('******\n', 'values', values)
+
+        setTimeout(() => {
+          console.log('******\n', 'trigger')
+          setFieldValue(CLUB_INFO_FORM_FIELDS.CLUB_COLORS, 'michdreby1')
+        }, 3000)
+      }
+    }, [foo, formikContext])
 
     return (
       <div className={classNames(styles.container, containerStyle ?? null)}>

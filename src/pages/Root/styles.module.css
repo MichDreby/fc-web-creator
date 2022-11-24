@@ -41,3 +41,13 @@
 .listContainer {
   padding: 0 30px;
 }
+
+.header {
+  height: 80px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+}
+.headerLabel {
+
+}

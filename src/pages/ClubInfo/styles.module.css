@@ -3,21 +3,11 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  /* border: 3px solid red; */
 }
-.header {
-  height: 80px;
-  /* border: 3px solid orange; */
-  padding: 0 18px;
-  display: flex;
-  align-items: center;
-}
-.headerLabel {
-  
-}
+
 .contentContainer {
   display: flex;
-  flex: 1 1;
+  flex: 1;
   background-color: #f9f9f9;
   padding: 15px;
 }
@@ -37,14 +27,11 @@
   background-color: #fefefe;
 }
 
-
-
 .formContainer {
   display: flex;
 }
 .formColumn {
   flex: 1;
-  /* padding-right: 15px; */
 }
 .formColumnLast {
   padding-left: 50px;

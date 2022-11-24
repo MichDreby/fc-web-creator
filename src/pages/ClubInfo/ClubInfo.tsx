@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import classNames from 'classnames'
+import { ChromePicker } from 'react-color'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
 import { Input } from '@components'
@@ -9,11 +10,10 @@ import { ClubInfoFormValues } from '@types'
 import styles from './styles.module.css'
 
 export const ClubInfo: React.FC = React.memo(() => {
+  const [color, setColor] = useState('#fff')
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h2 className={styles.headerLabel}>Football club info</h2>
-      </div>
       <div className={styles.contentContainer}>
         <div className={styles.leftContainer}>
           <Formik
@@ -21,7 +21,7 @@ export const ClubInfo: React.FC = React.memo(() => {
               [CLUB_INFO_FORM_FIELDS.NAME]: '',
               [CLUB_INFO_FORM_FIELDS.VENUE]: '',
               [CLUB_INFO_FORM_FIELDS.FOUNDED]: '',
-              [CLUB_INFO_FORM_FIELDS.CLUB_COLORS]: '',
+              [CLUB_INFO_FORM_FIELDS.CLUB_COLORS]: 'a',
               [CLUB_INFO_FORM_FIELDS.WEBSITE]: '',
             }}
             onSubmit={(values: ClubInfoFormValues) => {
@@ -63,13 +63,20 @@ export const ClubInfo: React.FC = React.memo(() => {
                   containerStyle={styles.inputContainer}
                   description={'Some description for this field'}
                 />
-                <Input
-                  fieldId={CLUB_INFO_FORM_FIELDS.CLUB_COLORS}
-                  label={'Colors'}
-                  placeholder={'Colors'}
-                  containerStyle={styles.inputContainer}
-                  description={'Some description for this field'}
-                />
+                <div>
+                  <Input
+                    fieldId={CLUB_INFO_FORM_FIELDS.CLUB_COLORS}
+                    label={'Colors'}
+                    placeholder={'Colors'}
+                    containerStyle={styles.inputContainer}
+                    description={'Some description for this field'}
+                    foo={123}
+                  />
+                  <ChromePicker
+                    color={color}
+                    onChangeComplete={(_color: string) => setColor(_color)}
+                  />
+                </div>
               </div>
             </Form>
           </Formik>
