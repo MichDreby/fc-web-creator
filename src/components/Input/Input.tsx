@@ -1,58 +1,45 @@
-import React, { useEffect } from 'react'
-import { Field, useFormikContext } from 'formik'
+import React from 'react'
+import { Field, GenericFieldHTMLAttributes } from 'formik'
 import classNames from 'classnames'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
 
-import styles from './styles.module.css'
+import styles from './Input.styles.module.css'
 
-interface IProps {
+export interface InputProps {
   fieldId: CLUB_INFO_FORM_FIELDS
   label: string
   containerStyle?: string
+  inputStyle?: string
   placeholder?: string
   description?: string
+  inputProps?: GenericFieldHTMLAttributes
 }
 
-export const Input: React.FC<IProps> = React.memo(
+export const Input: React.FC<InputProps> = React.memo(
   ({
     fieldId,
     label,
     containerStyle,
+    inputStyle,
     placeholder = '',
     description = '',
-    foo,
-  }) => {
-    const formikContext = useFormikContext()
-
-    useEffect(() => {
-      if (foo) {
-        const { values, setFieldValue } = formikContext
-
-        console.log('******\n', 'values', values)
-
-        setTimeout(() => {
-          console.log('******\n', 'trigger')
-          setFieldValue(CLUB_INFO_FORM_FIELDS.CLUB_COLORS, 'michdreby1')
-        }, 3000)
-      }
-    }, [foo, formikContext])
-
-    return (
-      <div className={classNames(styles.container, containerStyle ?? null)}>
-        <label htmlFor={fieldId} className={styles.label}>
-          {label}
-        </label>
-        <Field
-          id={fieldId}
-          name={fieldId}
-          placeholder={placeholder}
-          className={styles.input}
-        />
-        {Boolean(description) && (
-          <p className={styles.description}>{description}</p>
-        )}
-      </div>
-    )
-  },
+    inputProps,
+  }) => (
+    <div className={classNames(styles.container, containerStyle ?? null)}>
+      <label htmlFor={fieldId} className={styles.label}>
+        {label}
+      </label>
+      <Field
+        id={fieldId}
+        name={fieldId}
+        placeholder={placeholder}
+        className={classNames(styles.input, inputStyle ?? null)}
+        {...inputProps}
+      />
+      {Boolean(description) && (
+        <p className={styles.description}>{description}</p>
+      )}
+    </div>
+  ),
 )

@@ -1,0 +1,11 @@
+.container {
+  position: relative
+}
+.pickerContainer {
+  position: absolute;
+  left: 10px;
+  top: 32px;
+}
+.input {
+  padding: 10px 40px
+}

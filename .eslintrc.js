@@ -31,6 +31,7 @@ module.exports = {
       },
     ],
     'import/newline-after-import': ['error'],
+    'import/no-duplicates': ['error'],
 
     // object aligning
     'newline-before-return': ['error'],
@@ -62,6 +63,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-empty-function': ['warn'],
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 
   settings: {

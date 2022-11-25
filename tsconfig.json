@@ -21,9 +21,6 @@
     "jsx": "react-jsx",
     "target": "es5",
 
-    // nodejs
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "removeComments": true,
     "sourceMap": true,
   },
