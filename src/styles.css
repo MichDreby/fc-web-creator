@@ -4,7 +4,6 @@
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  color: #3f3f3f
 }
 
 html {
@@ -25,7 +24,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 
 h1 {
   font-size: 32px;
@@ -48,6 +46,6 @@ a {
   text-decoration: none;
 }
 
-input:disabled {
-  /*  */
+h1, h2, a, p {
+  color: #3f3f3f
 }

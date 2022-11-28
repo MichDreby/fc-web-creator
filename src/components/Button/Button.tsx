@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import classNames from 'classnames'
-import { useState } from 'react'
 
 import styles from './styles.module.css'
 

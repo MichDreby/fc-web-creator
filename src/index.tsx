@@ -12,8 +12,8 @@ import {
   faChevronRight,
   faGear,
   faGears,
+  faFolderClosed,
 } from '@fortawesome/free-solid-svg-icons'
-// import { faFutbol, faFutbolBall } from '@fortawesome/free-regular-svg-icons'
 
 import './styles.css'
 
@@ -28,6 +28,7 @@ library.add(
   faChevronRight,
   faGear,
   faGears,
+  faFolderClosed,
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

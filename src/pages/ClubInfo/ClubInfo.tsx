@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import classNames from 'classnames'
 
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
-import { ColorPickerInput, Input } from '@components'
+import { ColorPickerInput, Input, Previewer } from '@components'
 import { ClubInfoFormValues } from '@types'
 
 import styles from './styles.module.css'
@@ -72,7 +72,9 @@ export const ClubInfo: React.FC = React.memo(() => (
           </Form>
         </Formik>
       </div>
-      <div className={styles.rightContainer} />
+      <div className={styles.rightContainer}>
+        <Previewer />
+      </div>
     </div>
   </div>
 ))
