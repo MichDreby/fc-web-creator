@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './styles.module.css'
 
 const defaultUrl =
-  'https://simg.nicepng.com/png/small/246-2467547_your-logo-here-your-logo-here-logo-png.png'
+  'https://cdn5.vectorstock.com/i/thumb-large/77/94/your-logo-here-placeholder-symbol-vector-25817794.jpg'
 
 export interface PreviewerProps {
   url?: string
@@ -17,6 +17,7 @@ type UploadedFile = File & {
   src: string
 }
 
+// todo: rename this component
 export const Previewer: React.FC<PreviewerProps> = React.memo(({ url }) => {
   const [uploadedImage, setUploadedImage] = useState<UploadedFile | null>(null)
   const { getRootProps, getInputProps } = useDropzone({
