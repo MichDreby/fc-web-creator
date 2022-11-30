@@ -13,6 +13,7 @@ import {
   faGear,
   faGears,
   faFolderClosed,
+  faTrashCan,
 } from '@fortawesome/free-solid-svg-icons'
 
 import './styles.css'
@@ -29,6 +30,7 @@ library.add(
   faGear,
   faGears,
   faFolderClosed,
+  faTrashCan,
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
