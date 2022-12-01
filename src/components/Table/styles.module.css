@@ -1,6 +1,11 @@
 .container {
 
 }
+.buttonsRowContainer{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px;
+}
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -40,7 +45,22 @@
 .cellInput:focus {
   outline-width: 0;
 }
+.cellEditing {
+  background-color: red
+}
 
-.deleteIcon {
+.rowActionButtonsContainer {
+  display: flex;
+}
+.actionIcon {
   color: #5898fa
+}
+.editIcon {
+
+}
+.deleteIcon {
+
+}
+.editCompleteIcon {
+  color: #30ae4a
 }

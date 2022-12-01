@@ -1,11 +1,9 @@
 .container {
-  font-size: 18px;
-  border-radius: 12px;
-  padding: 16px 8px;
+  border-radius: 6px;
+  padding: 8px 10px;
   border: 0;
-  background-color:#0071e3;
-  min-width: 100px;
-  width: 100%;
+  background-color: #5898fa;
+  /* min-width: 140px; */
 }
 .container:hover {
   background-color: #0081e3;
@@ -14,6 +12,7 @@
   background-color: #0071e3
 }
 .label {
-  font-size: 18px;
   color: #fff;
+  font-size: 14px;
+  font-weight: 500;
 }

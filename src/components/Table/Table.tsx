@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import moment from 'moment'
 import { pullAt } from 'lodash'
+import classNames from 'classnames'
 
 import {
   ColumnDef,
@@ -12,6 +13,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Button } from '../Button'
+import { Clickable } from '../Clickable'
 
 import { defaultData, Player } from './dataMocks'
 import styles from './styles.module.css'
@@ -19,30 +21,40 @@ import styles from './styles.module.css'
 const columnHelper = createColumnHelper<Player>()
 
 const defaultColumn: Partial<ColumnDef<Player>> = {
-  cell: ({ getValue, row: { index }, column: { id }, table }) => {
+  cell: ({
+    getValue,
+    row: { id: rowId },
+    table: {
+      options: {
+        meta: { editableRowId },
+      },
+    },
+  }) => {
     const initialValue = getValue()
-    const [value, setValue] = useState(initialValue)
-    const onBlur = () => {
-      table.options.meta?.updateData(index, id, value)
-    }
+    const [currentValue, setCurrentValue] = useState<string>(initialValue)
 
     useEffect(() => {
-      setValue(initialValue)
+      setCurrentValue(initialValue)
     }, [initialValue])
 
-    return (
+    const isEditable = rowId === editableRowId
+
+    return isEditable ? (
       <input
-        className={styles.cellInput}
-        value={value as string}
-        onChange={(e) => setValue(e.target.value)}
-        onBlur={onBlur}
+        className={classNames(styles.cellInput)}
+        value={currentValue}
+        onChange={(e) => setCurrentValue(e.target.value)}
       />
+    ) : (
+      <div>{currentValue}</div>
     )
   },
 }
 
 export const Table = () => {
   const [tableData, setTableData] = useState(defaultData)
+  const [editableRowId, setEditableRowId] = useState<null | string>(null)
+
   const columns = useMemo(
     () => [
       columnHelper.accessor('first_name', {
@@ -77,23 +89,61 @@ export const Table = () => {
       }),
       columnHelper.display({
         id: 'delete_column',
-        cell: (tableProps) => (
-          <div
-            style={{
-              cursor: 'pointer',
-              color: 'blue',
-              textDecoration: 'underline',
-            }}
-            onClick={() => {
-              const nextTableData = [...tableData]
-              pullAt(nextTableData, tableProps.row.index)
+        cell: ({
+          row,
+          table: {
+            options: {
+              meta: { editableRowId },
+            },
+          },
+        }) => {
+          const { id, index } = row
 
-              setTableData(nextTableData)
-            }}
-          >
-            <FontAwesomeIcon icon={'trash-can'} className={styles.deleteIcon} />
-          </div>
-        ),
+          const handleDeleteRow = () => {
+            const nextTableData = [...tableData]
+            pullAt(nextTableData, index)
+            console.log('******\n', 'nextTableData', nextTableData)
+
+            setTableData(nextTableData)
+          }
+
+          const handleEditRow = () => {
+            setEditableRowId(id)
+          }
+
+          const handleEditRowComplete = () => {
+            setEditableRowId(null)
+          }
+
+          const isEditable = id === editableRowId
+
+          return (
+            <div className={styles.rowActionButtonsContainer}>
+              {isEditable ? (
+                <Clickable onClick={handleEditRowComplete}>
+                  <FontAwesomeIcon
+                    icon={'check'}
+                    className={classNames(styles.editCompleteIcon)}
+                  />
+                </Clickable>
+              ) : (
+                <Clickable onClick={handleEditRow}>
+                  <FontAwesomeIcon
+                    icon={'pencil'}
+                    className={classNames(styles.actionIcon)}
+                  />
+                </Clickable>
+              )}
+
+              <Clickable onClick={handleDeleteRow}>
+                <FontAwesomeIcon
+                  icon={'trash-can'}
+                  className={styles.actionIcon}
+                />
+              </Clickable>
+            </div>
+          )
+        },
       }),
     ],
     [tableData],
@@ -104,6 +154,10 @@ export const Table = () => {
     columns,
     defaultColumn,
     getCoreRowModel: getCoreRowModel(),
+    meta: {
+      editableRowId,
+      setEditableRowId,
+    },
   })
 
   const handleAddRow = useCallback(() => {
@@ -125,6 +179,9 @@ export const Table = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.buttonsRowContainer}>
+        <Button label={'add player'} onClick={handleAddRow} />
+      </div>
       <table className={styles.table}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -154,13 +211,6 @@ export const Table = () => {
           ))}
         </tbody>
       </table>
-      <div
-        style={{
-          marginTop: 20,
-        }}
-      >
-        <Button onClick={handleAddRow} label={'new'} />
-      </div>
     </div>
   )
 }
