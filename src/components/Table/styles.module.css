@@ -31,7 +31,7 @@
 .bodyCell {
   font-size: 13px;
   position: relative;
-  padding: 20px 0;
+  padding: 14px 0;
 }
 
 .cellInput {
@@ -46,7 +46,8 @@
   outline-width: 0;
 }
 .cellEditing {
-  background-color: red
+  /* background-color: red */
+  background-color: #efefef4d
 }
 
 .rowActionButtonsContainer {

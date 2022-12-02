@@ -93,6 +93,8 @@ export const Table = () => {
     ])
   }, [tableData])
 
+  // return <DateCell />
+
   return (
     <div className={styles.container}>
       <div className={styles.buttonsRowContainer}>

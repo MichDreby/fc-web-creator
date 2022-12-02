@@ -1,3 +1,6 @@
 .dropdown {
   width: 130px
 }
+.dropdownDisabled {
+  background-color: #efefef4d;
+}

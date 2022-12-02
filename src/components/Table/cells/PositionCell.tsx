@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import Dropdown, { Option } from 'react-dropdown'
+import classNames from 'classnames'
 
 import { CellProps } from '../types'
 
@@ -56,6 +57,7 @@ export const PositionCell: FC<CellProps<string>> = ({ isRowEditable }) => {
     <div className={styles.container}>
       <Dropdown
         className={styles.dropdown}
+        controlClassName={classNames(!isRowEditable && styles.dropdownDisabled)}
         disabled={!isRowEditable}
         options={options}
         onChange={handleOnChange}
