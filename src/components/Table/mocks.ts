@@ -1,15 +1,4 @@
-export type Player = {
-  id?: string
-  first_name: string
-  last_name: string
-  shirt_name: string
-  position: string
-  birthday: string
-  nationality: string
-  shirt_number: number
-  contract_start: string
-  contract_end: string
-}
+import { Player } from './types'
 
 export const defaultData: Player[] = [
   {

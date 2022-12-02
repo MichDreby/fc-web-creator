@@ -1,160 +1,76 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import moment from 'moment'
-import { pullAt } from 'lodash'
-import classNames from 'classnames'
+import { useCallback, useState } from 'react'
 
 import {
-  ColumnDef,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Button } from '../Button'
-import { Clickable } from '../Clickable'
 
-import { defaultData, Player } from './dataMocks'
+import { defaultData } from './mocks'
 import styles from './styles.module.css'
+import { withIsRowEditable } from './withIsRowEditable'
+import { Player } from './types'
+import { TextCell, PositionCell, DateCell, ActionCell } from './cells'
 
 const columnHelper = createColumnHelper<Player>()
 
-const defaultColumn: Partial<ColumnDef<Player>> = {
-  cell: ({
-    getValue,
-    row: { id: rowId },
-    table: {
-      options: {
-        meta: { editableRowId },
-      },
-    },
-  }) => {
-    const initialValue = getValue()
-    const [currentValue, setCurrentValue] = useState<string>(initialValue)
-
-    useEffect(() => {
-      setCurrentValue(initialValue)
-    }, [initialValue])
-
-    const isEditable = rowId === editableRowId
-
-    return isEditable ? (
-      <input
-        className={classNames(styles.cellInput)}
-        value={currentValue}
-        onChange={(e) => setCurrentValue(e.target.value)}
-      />
-    ) : (
-      <div>{currentValue}</div>
-    )
-  },
-}
+const columns = [
+  columnHelper.accessor('first_name', {
+    header: 'First Name',
+    cell: withIsRowEditable(TextCell),
+  }),
+  columnHelper.accessor('last_name', {
+    header: 'Last Name',
+    cell: withIsRowEditable(TextCell),
+  }),
+  columnHelper.accessor('position', {
+    header: 'Position',
+    cell: withIsRowEditable(PositionCell),
+  }),
+  columnHelper.accessor('nationality', {
+    header: 'Nationality',
+    cell: withIsRowEditable(TextCell),
+  }),
+  columnHelper.accessor('shirt_name', {
+    header: 'Shirt Name',
+    cell: withIsRowEditable(TextCell),
+  }),
+  columnHelper.accessor('shirt_number', {
+    header: 'Shirt Number',
+    cell: withIsRowEditable(TextCell),
+  }),
+  columnHelper.accessor('birthday', {
+    header: 'Birthday',
+    cell: withIsRowEditable(DateCell),
+  }),
+  columnHelper.accessor('contract_start', {
+    header: 'Contract Start',
+    cell: withIsRowEditable(DateCell),
+  }),
+  columnHelper.accessor('contract_end', {
+    header: 'Contract End',
+    cell: withIsRowEditable(DateCell),
+  }),
+  columnHelper.display({
+    id: 'action_column',
+    cell: withIsRowEditable(ActionCell),
+  }),
+]
 
 export const Table = () => {
   const [tableData, setTableData] = useState(defaultData)
   const [editableRowId, setEditableRowId] = useState<null | string>(null)
 
-  const columns = useMemo(
-    () => [
-      columnHelper.accessor('first_name', {
-        header: 'First Name',
-      }),
-      columnHelper.accessor('last_name', {
-        header: 'Last Name',
-      }),
-      columnHelper.accessor('position', {
-        header: 'Position',
-      }),
-      columnHelper.accessor('nationality', {
-        header: 'Nationality',
-      }),
-      columnHelper.accessor('shirt_name', {
-        header: 'Shirt Name',
-      }),
-      columnHelper.accessor('shirt_number', {
-        header: 'Shirt Number',
-      }),
-      columnHelper.accessor('birthday', {
-        header: 'Birthday',
-        cell: (info) => moment(info.getValue() || undefined).format('L'),
-      }),
-      columnHelper.accessor('contract_start', {
-        header: 'Contract Start',
-        cell: (info) => moment(info.getValue() || undefined).format('L'),
-      }),
-      columnHelper.accessor('contract_end', {
-        header: 'Contract End',
-        cell: (info) => moment(info.getValue() || undefined).format('L'),
-      }),
-      columnHelper.display({
-        id: 'delete_column',
-        cell: ({
-          row,
-          table: {
-            options: {
-              meta: { editableRowId },
-            },
-          },
-        }) => {
-          const { id, index } = row
-
-          const handleDeleteRow = () => {
-            const nextTableData = [...tableData]
-            pullAt(nextTableData, index)
-            console.log('******\n', 'nextTableData', nextTableData)
-
-            setTableData(nextTableData)
-          }
-
-          const handleEditRow = () => {
-            setEditableRowId(id)
-          }
-
-          const handleEditRowComplete = () => {
-            setEditableRowId(null)
-          }
-
-          const isEditable = id === editableRowId
-
-          return (
-            <div className={styles.rowActionButtonsContainer}>
-              {isEditable ? (
-                <Clickable onClick={handleEditRowComplete}>
-                  <FontAwesomeIcon
-                    icon={'check'}
-                    className={classNames(styles.editCompleteIcon)}
-                  />
-                </Clickable>
-              ) : (
-                <Clickable onClick={handleEditRow}>
-                  <FontAwesomeIcon
-                    icon={'pencil'}
-                    className={classNames(styles.actionIcon)}
-                  />
-                </Clickable>
-              )}
-
-              <Clickable onClick={handleDeleteRow}>
-                <FontAwesomeIcon
-                  icon={'trash-can'}
-                  className={styles.actionIcon}
-                />
-              </Clickable>
-            </div>
-          )
-        },
-      }),
-    ],
-    [tableData],
-  )
-
   const table = useReactTable({
     data: tableData,
     columns,
-    defaultColumn,
     getCoreRowModel: getCoreRowModel(),
     meta: {
+      tableData,
+      setTableData,
       editableRowId,
       setEditableRowId,
     },
@@ -170,7 +86,7 @@ export const Table = () => {
         position: 'Striker',
         birthday: '',
         nationality: 'Belarus',
-        shirt_number: '99',
+        shirt_number: 99,
         contract_start: '',
         contract_end: '',
       },
