@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import moment from 'moment'
 
 import {
   createColumnHelper,
@@ -84,21 +85,19 @@ export const Table = () => {
         last_name: 'Last name',
         shirt_name: 'Shirt name',
         position: 'Striker',
-        birthday: '',
+        birthday: moment('2000').format(),
         nationality: 'Belarus',
         shirt_number: 99,
-        contract_start: '',
-        contract_end: '',
+        contract_start: moment('2022').format(),
+        contract_end: moment('2024').format(),
       },
     ])
   }, [tableData])
 
-  // return <DateCell />
-
   return (
     <div className={styles.container}>
       <div className={styles.buttonsRowContainer}>
-        <Button label={'add player'} onClick={handleAddRow} />
+        <Button label={'+ Add player'} onClick={handleAddRow} />
       </div>
       <table className={styles.table}>
         <thead>
