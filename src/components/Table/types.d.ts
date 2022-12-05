@@ -1,23 +1,12 @@
+import { Player } from '@interfaces'
 import { RowData, CellContext, Table } from '@tanstack/react-table'
 
 import { PlayersTableMeta } from './types'
 
-export type Player = {
-  id?: string
-  first_name: string
-  last_name: string
-  shirt_name: string
-  position: string
-  birthday: string
-  nationality: string
-  shirt_number: number
-  contract_start: string
-  contract_end: string
-}
-
 export interface PlayersTableMeta {
   tableData: Player[]
   setTableData: React.Dispatch<React.SetStateAction<Player[]>>
+  updateCellData: (rowIndex: number, columnId: string, nextValue: any) => void
   editableRowId: null | string
   setEditableRowId: React.Dispatch<React.SetStateAction<string | null>>
 }
