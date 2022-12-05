@@ -3,7 +3,7 @@ import { pullAt } from 'lodash'
 import { FC, useCallback } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updatePlayer } from '@api'
+import { createPlayer, deletePlayer, updatePlayer } from '@api'
 
 import { Clickable } from '../../Clickable'
 import { CellProps } from '../types'
@@ -19,10 +19,16 @@ export const ActionCell: FC<CellProps<null>> = ({
   isRowEditable,
 }) => {
   const handleDeleteRow = () => {
+    const { id } = original
+
     const nextTableData = [...tableData]
     pullAt(nextTableData, rowIndex)
 
     setTableData(nextTableData)
+
+    if (id) {
+      deletePlayer(id)
+    }
   }
 
   const handleEditRow = () => {
@@ -32,7 +38,14 @@ export const ActionCell: FC<CellProps<null>> = ({
   const handleEditRowComplete = useCallback(() => {
     const { id, ...playerData } = original
 
-    updatePlayer(id as string, playerData)
+    console.log('******\n', 'playerData', playerData)
+
+    if (id) {
+      updatePlayer(id as string, playerData)
+    } else {
+      createPlayer(playerData)
+    }
+
     setEditableRowId(null)
   }, [original, setEditableRowId])
 
