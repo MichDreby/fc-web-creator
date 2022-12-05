@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { identity } from 'lodash'
 
 export const Network = new (class {
   private axiosInstance = axios.create({
@@ -6,6 +7,21 @@ export const Network = new (class {
       'Content-Type': 'application/json',
     },
   })
+
+  constructor() {
+    this.init()
+  }
+
+  private init() {
+    this.axiosInstance.interceptors.response.use(identity, (error) => {
+      console.log(
+        'network error,',
+        error?.response?.data?.message?.[0] || error?.message,
+      )
+
+      return Promise.reject(error)
+    })
+  }
 
   private request = async <T>(
     url: string,
