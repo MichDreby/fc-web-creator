@@ -1,5 +1,4 @@
-import moment from 'moment'
-import { FC, useState } from 'react'
+import { FC, useCallback } from 'react'
 import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
@@ -10,17 +9,27 @@ import './ReactDatePicker.styles.css'
 export const DateCell: FC<CellProps<string>> = ({
   isRowEditable,
   getValue,
+  row: { index: rowIndex },
+  column: { id: columnId },
+  table: {
+    options: {
+      meta: { updateCellData },
+    },
+  },
 }) => {
-  const value = moment(getValue()).toDate()
-
-  const [startDate, setStartDate] = useState<null | Date>(value)
+  const handleOnChange = useCallback(
+    (value: Date) => {
+      updateCellData(rowIndex, columnId, value)
+    },
+    [columnId, rowIndex, updateCellData],
+  )
 
   return (
     <div>
       <DatePicker
         disabled={!isRowEditable}
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        selected={new Date(getValue())}
+        onChange={handleOnChange}
       />
     </div>
   )

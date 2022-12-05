@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback } from 'react'
 import Dropdown, { Option } from 'react-dropdown'
 import classNames from 'classnames'
 import 'react-dropdown/style.css'
@@ -56,11 +56,8 @@ export const PositionCell: FC<CellProps<PlayerPosition>> = ({
     },
   },
 }) => {
-  const [value, setValue] = useState<Option>(getOptionByValue(getValue()))
-
   const handleOnChange = useCallback(
     (option: Option) => {
-      setValue(option)
       updateCellData(rowIndex, columnId, option?.value)
     },
     [columnId, rowIndex, updateCellData],
@@ -74,7 +71,7 @@ export const PositionCell: FC<CellProps<PlayerPosition>> = ({
         disabled={!isRowEditable}
         options={options}
         onChange={handleOnChange}
-        value={value}
+        value={getOptionByValue(getValue())}
         placeholder="Select an option"
       />
     </div>
