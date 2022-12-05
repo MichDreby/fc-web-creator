@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import moment from 'moment'
+import { map } from 'lodash'
 
 import {
   createColumnHelper,
@@ -7,13 +8,12 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+import { Player } from '@interfaces'
 
 import { Button } from '../Button'
 
-import { defaultData } from './mocks'
 import styles from './styles.module.css'
 import { withIsRowEditable } from './withIsRowEditable'
-import { Player } from './types'
 import { TextCell, PositionCell, DateCell, ActionCell } from './cells'
 
 const columnHelper = createColumnHelper<Player>()
@@ -61,9 +61,29 @@ const columns = [
   }),
 ]
 
-export const Table = () => {
-  const [tableData, setTableData] = useState(defaultData)
+interface TableProps {
+  data: Player[]
+}
+
+export const Table: FC<TableProps> = ({ data }) => {
+  const [tableData, setTableData] = useState(data)
   const [editableRowId, setEditableRowId] = useState<null | string>(null)
+
+  const updateCellData = useCallback(
+    (rowIndex: number, columnId: string, nextValue: any) => {
+      setTableData((prevState) =>
+        map(prevState, (rowData, index) =>
+          index === rowIndex
+            ? {
+                ...prevState[rowIndex]!,
+                [columnId]: nextValue,
+              }
+            : rowData,
+        ),
+      )
+    },
+    [],
+  )
 
   const table = useReactTable({
     data: tableData,
@@ -72,6 +92,7 @@ export const Table = () => {
     meta: {
       tableData,
       setTableData,
+      updateCellData,
       editableRowId,
       setEditableRowId,
     },

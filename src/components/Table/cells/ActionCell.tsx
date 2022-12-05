@@ -1,15 +1,16 @@
 import classNames from 'classnames'
 import { pullAt } from 'lodash'
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { updatePlayer } from '@api'
 
 import { Clickable } from '../../Clickable'
 import { CellProps } from '../types'
 import styles from '../styles.module.css'
 
 export const ActionCell: FC<CellProps<null>> = ({
-  row: { id: rowId, index: rowIndex },
+  row: { id: rowId, index: rowIndex, original },
   table: {
     options: {
       meta: { tableData, setTableData, setEditableRowId },
@@ -28,9 +29,12 @@ export const ActionCell: FC<CellProps<null>> = ({
     setEditableRowId(rowId)
   }
 
-  const handleEditRowComplete = () => {
+  const handleEditRowComplete = useCallback(() => {
+    const { id, ...playerData } = original
+
+    updatePlayer(id as string, playerData)
     setEditableRowId(null)
-  }
+  }, [original, setEditableRowId])
 
   return (
     <div className={styles.rowActionButtonsContainer}>

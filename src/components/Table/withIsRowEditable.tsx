@@ -2,8 +2,9 @@ import hoistNonReactStatics from 'hoist-non-react-statics'
 import { FC } from 'react'
 
 import { CellContext, ColumnDefTemplate } from '@tanstack/react-table'
+import { Player } from '@interfaces'
 
-import { CellProps, Player, RawCellProps } from './types'
+import { CellProps, RawCellProps } from './types'
 
 export const withIsRowEditable = (WrappedComponent: FC<CellProps<any>>) => {
   const Enhanced: FC<RawCellProps<any>> = (props) => {

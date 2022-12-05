@@ -1,20 +1,13 @@
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import Dropdown, { Option } from 'react-dropdown'
 import classNames from 'classnames'
+import 'react-dropdown/style.css'
+
+import { PlayerPosition } from '@interfaces'
 
 import { CellProps } from '../types'
 
-import 'react-dropdown/style.css'
 import styles from './PositionCell.styles.module.css'
-
-export type PlayerPosition =
-  | 'goalkeeper'
-  | 'defender'
-  | 'midfielder'
-  | 'striker'
-  | 'manager'
-  | 'coach'
-  | 'stuff'
 
 const options = [
   {
@@ -47,11 +40,31 @@ const options = [
   },
 ]
 
-export const PositionCell: FC<CellProps<string>> = ({ isRowEditable }) => {
-  const [value, setValue] = useState<Option>(options[1])
-  const handleOnChange = (option: Option) => {
-    setValue(option)
-  }
+const getOptionByValue = (value: PlayerPosition) => ({
+  value,
+  label: value,
+})
+
+export const PositionCell: FC<CellProps<PlayerPosition>> = ({
+  getValue,
+  isRowEditable,
+  row: { index: rowIndex },
+  column: { id: columnId },
+  table: {
+    options: {
+      meta: { updateCellData },
+    },
+  },
+}) => {
+  const [value, setValue] = useState<Option>(getOptionByValue(getValue()))
+
+  const handleOnChange = useCallback(
+    (option: Option) => {
+      setValue(option)
+      updateCellData(rowIndex, columnId, option?.value)
+    },
+    [columnId, rowIndex, updateCellData],
+  )
 
   return (
     <div className={styles.container}>
