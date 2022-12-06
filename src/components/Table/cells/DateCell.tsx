@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { FC, useCallback } from 'react'
 import DatePicker from 'react-datepicker'
 
@@ -5,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { CellProps } from '../types'
 
 import './ReactDatePicker.styles.css'
+import styles from './DateCell.styles.module.css'
 
 export const DateCell: FC<CellProps<string>> = ({
   isRowEditable,
@@ -25,12 +27,23 @@ export const DateCell: FC<CellProps<string>> = ({
   )
 
   return (
-    <div>
-      <DatePicker
-        disabled={!isRowEditable}
-        selected={new Date(getValue())}
-        onChange={handleOnChange}
-      />
+    <div
+      style={{
+        width: 100,
+      }}
+    >
+      {isRowEditable ? (
+        <DatePicker
+          disabled={!isRowEditable}
+          selected={new Date(getValue())}
+          onChange={handleOnChange}
+        />
+      ) : (
+        <input
+          className={styles.input}
+          value={moment(getValue()).format('L')}
+        />
+      )}
     </div>
   )
 }

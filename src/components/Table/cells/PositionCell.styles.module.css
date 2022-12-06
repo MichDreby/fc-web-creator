@@ -1,6 +1,21 @@
 .dropdown {
-  width: 130px
+  width: 120px;
 }
-.dropdownDisabled {
-  background-color: #efefef4d;
+.dropdownControl {
+  transition: none;
+  
+  height: 32px;
+  display: flex;
+  align-items: center;
+  transition: none;
+  padding: 0 10px;
+}
+.dropdownControl:hover {
+  box-shadow: none
+}
+.dropdownControlNotEditable {
+  border: 1px solid transparent
+}
+.dropdownArrowWrapperNotEditable {
+  visibility: hidden;
 }

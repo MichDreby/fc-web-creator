@@ -1,0 +1,9 @@
+.rowActionButtonsContainer {
+  display: flex;
+}
+.actionIcon {
+  color: #5898fa
+}
+.editCompleteIcon {
+  color: #30ae4a
+}

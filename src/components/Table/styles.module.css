@@ -17,13 +17,12 @@
 .headerCell {
   font-weight: 600;
   font-size: 12px;
-  padding: 20px 0;
+  padding: 20px 10px;
   text-align: left;
 }
 
 .bodyRow {
   border-bottom: 0.5px solid #e8e8e8;
-  
 }
 .bodyRow:hover {
   /* background-color: #e9e9e9; */
@@ -32,36 +31,4 @@
   font-size: 13px;
   position: relative;
   padding: 14px 0;
-}
-
-.cellInput {
-  border: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.cellInput:focus {
-  outline-width: 0;
-}
-.cellEditing {
-  /* background-color: red */
-  background-color: #efefef4d
-}
-
-.rowActionButtonsContainer {
-  display: flex;
-}
-.actionIcon {
-  color: #5898fa
-}
-.editIcon {
-
-}
-.deleteIcon {
-
-}
-.editCompleteIcon {
-  color: #30ae4a
 }

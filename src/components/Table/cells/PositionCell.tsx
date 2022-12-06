@@ -67,7 +67,13 @@ export const PositionCell: FC<CellProps<PlayerPosition>> = ({
     <div className={styles.container}>
       <Dropdown
         className={styles.dropdown}
-        controlClassName={classNames(!isRowEditable && styles.dropdownDisabled)}
+        controlClassName={classNames(
+          styles.dropdownControl,
+          isRowEditable ? null : styles.dropdownControlNotEditable,
+        )}
+        arrowClassName={classNames(
+          isRowEditable ? null : styles.dropdownArrowWrapperNotEditable,
+        )}
         disabled={!isRowEditable}
         options={options}
         onChange={handleOnChange}

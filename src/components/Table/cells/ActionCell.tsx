@@ -7,7 +7,8 @@ import { createPlayer, deletePlayer, updatePlayer } from '@api'
 
 import { Clickable } from '../../Clickable'
 import { CellProps } from '../types'
-import styles from '../styles.module.css'
+
+import styles from './ActionCell.styles.module.css'
 
 export const ActionCell: FC<CellProps<null>> = ({
   row: { id: rowId, index: rowIndex, original },

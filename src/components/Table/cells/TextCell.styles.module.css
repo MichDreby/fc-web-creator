@@ -1,0 +1,17 @@
+.inputEditable {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  height: 32px;
+  padding: 0 10px;
+  width: 100px;
+}
+.inputNotEditable {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  height: 32px;
+  padding: 0 10px;
+  width: 100px;
+}
+.inputNotEditable:disabled {
+  background-color: inherit;
+}

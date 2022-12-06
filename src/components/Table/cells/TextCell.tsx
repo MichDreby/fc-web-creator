@@ -1,8 +1,9 @@
 import classNames from 'classnames'
 import { FC, useState, useCallback } from 'react'
 
-import styles from '../styles.module.css'
 import { CellProps } from '../types'
+
+import styles from './TextCell.styles.module.css'
 
 export type OnChangeCallback = (event: {
   target: {
@@ -31,13 +32,14 @@ export const TextCell: FC<CellProps<string>> = ({
     [columnId, rowIndex, updateCellData],
   )
 
-  return isRowEditable ? (
+  return (
     <input
       value={value}
       onChange={handleOnChange}
-      className={classNames(styles.cellInput)}
+      className={classNames(
+        isRowEditable ? styles.inputEditable : styles.inputNotEditable,
+      )}
+      disabled={!isRowEditable}
     />
-  ) : (
-    <div>{value}</div>
   )
 }
