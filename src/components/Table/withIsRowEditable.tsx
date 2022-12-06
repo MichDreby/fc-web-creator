@@ -9,14 +9,14 @@ import { CellProps, RawCellProps } from './types'
 export const withIsRowEditable = (WrappedComponent: FC<CellProps<any>>) => {
   const Enhanced: FC<RawCellProps<any>> = (props) => {
     const {
-      row: { id: rowId },
+      row: { index: rowIndex },
       table: {
         options: {
-          meta: { editableRowId },
+          meta: { editableRowIndex },
         },
       },
     } = props
-    const isRowEditable = rowId === editableRowId
+    const isRowEditable = rowIndex === editableRowIndex
 
     return <WrappedComponent {...props} isRowEditable={isRowEditable} />
   }

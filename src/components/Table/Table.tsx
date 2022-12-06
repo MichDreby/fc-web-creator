@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react'
 import moment from 'moment'
-import { map } from 'lodash'
+import { map, size } from 'lodash'
 
 import {
   createColumnHelper,
@@ -16,6 +16,18 @@ import styles from './styles.module.css'
 import { withIsRowEditable } from './withIsRowEditable'
 import { TextCell, PositionCell, DateCell, ActionCell } from './cells'
 import { withIsNumeric } from './withIsNumeric'
+
+const getDefaultPlayerData = () => ({
+  first_name: 'First Name',
+  last_name: 'LastName',
+  shirt_name: 'ShirtName',
+  position: 'Striker',
+  birthday: moment('2000').format(),
+  nationality: 'Belarus',
+  shirt_number: 99,
+  contract_start: moment('2022').format(),
+  contract_end: moment('2024').format(),
+})
 
 const columnHelper = createColumnHelper<Player>()
 
@@ -68,7 +80,7 @@ interface TableProps {
 
 export const Table: FC<TableProps> = ({ data }) => {
   const [tableData, setTableData] = useState(data)
-  const [editableRowId, setEditableRowId] = useState<null | string>(null)
+  const [editableRowIndex, setEditableRowIndex] = useState<null | number>(null)
 
   const updateCellData = useCallback(
     (rowIndex: number, columnId: string, nextValue: any) => {
@@ -94,26 +106,19 @@ export const Table: FC<TableProps> = ({ data }) => {
       tableData,
       setTableData,
       updateCellData,
-      editableRowId,
-      setEditableRowId,
+      editableRowIndex,
+      setEditableRowIndex,
     },
   })
 
   const handleAddRow = useCallback(() => {
-    setTableData([
-      ...tableData,
-      {
-        first_name: 'First Name',
-        last_name: 'LastName',
-        shirt_name: 'ShirtName',
-        position: 'Striker',
-        birthday: moment('2000').format(),
-        nationality: 'Belarus',
-        shirt_number: 99,
-        contract_start: moment('2022').format(),
-        contract_end: moment('2024').format(),
-      },
-    ])
+    setTableData([...tableData, getDefaultPlayerData()])
+
+    // dirty hack
+    // todo: remake using usePrevious hook
+    setTimeout(() => {
+      setEditableRowIndex(size(tableData))
+    }, 0)
   }, [tableData])
 
   return (

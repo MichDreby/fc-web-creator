@@ -11,10 +11,10 @@ import { CellProps } from '../types'
 import styles from './ActionCell.styles.module.css'
 
 export const ActionCell: FC<CellProps<null>> = ({
-  row: { id: rowId, index: rowIndex, original },
+  row: { index: rowIndex, original },
   table: {
     options: {
-      meta: { tableData, setTableData, setEditableRowId },
+      meta: { tableData, setTableData, setEditableRowIndex },
     },
   },
   isRowEditable,
@@ -33,7 +33,7 @@ export const ActionCell: FC<CellProps<null>> = ({
   }
 
   const handleEditRow = () => {
-    setEditableRowId(rowId)
+    setEditableRowIndex(rowIndex)
   }
 
   const handleEditRowComplete = useCallback(() => {
@@ -47,8 +47,8 @@ export const ActionCell: FC<CellProps<null>> = ({
       createPlayer(playerData)
     }
 
-    setEditableRowId(null)
-  }, [original, setEditableRowId])
+    setEditableRowIndex(null)
+  }, [original, setEditableRowIndex])
 
   return (
     <div className={styles.rowActionButtonsContainer}>

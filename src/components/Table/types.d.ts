@@ -7,8 +7,8 @@ export interface PlayersTableMeta {
   tableData: Player[]
   setTableData: React.Dispatch<React.SetStateAction<Player[]>>
   updateCellData: (rowIndex: number, columnId: string, nextValue: any) => void
-  editableRowId: null | string
-  setEditableRowId: React.Dispatch<React.SetStateAction<string | null>>
+  editableRowIndex: null | number
+  setEditableRowIndex: React.Dispatch<React.SetStateAction<number | null>>
 }
 
 export type RawCellProps<CellValue> = CellContext<Player, CellValue> & {
