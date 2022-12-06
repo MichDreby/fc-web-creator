@@ -22,7 +22,7 @@ export const TextCell: FC<CellProps<string>> = ({
     },
   },
 }) => {
-  const [value, setValue] = useState<string>(() => getValue())
+  const [value, setValue] = useState<string>(() => String(getValue()))
 
   const handleOnChange = useCallback<OnChangeCallback>(
     ({ target: { value } }) => {
