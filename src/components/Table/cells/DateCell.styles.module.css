@@ -4,4 +4,6 @@
   height: 32px;
   padding: 0 10px;
   width: 110px;
+  display: flex;
+  align-items: center;
 }

@@ -23,6 +23,10 @@ export type CellProps<CellValue> = RawCellProps<CellValue> & {
   isRowEditable: boolean
 }
 
+export type WithIsNumeric = {
+  isNumeric: boolean
+}
+
 declare module '@tanstack/table-core' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface, @typescript-eslint/no-unused-vars
   interface TableMeta<TData extends RowData> extends PlayersTableMeta {}

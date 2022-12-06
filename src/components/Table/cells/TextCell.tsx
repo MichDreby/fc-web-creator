@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { FC, useState, useCallback } from 'react'
 
-import { CellProps } from '../types'
+import { CellProps, WithIsNumeric } from '../types'
 
 import styles from './TextCell.styles.module.css'
 
@@ -11,7 +11,7 @@ export type OnChangeCallback = (event: {
   }
 }) => void
 
-export const TextCell: FC<CellProps<string>> = ({
+export const TextCell: FC<CellProps<string> & Partial<WithIsNumeric>> = ({
   getValue,
   isRowEditable,
   row: { index: rowIndex },
@@ -21,15 +21,16 @@ export const TextCell: FC<CellProps<string>> = ({
       meta: { updateCellData },
     },
   },
+  isNumeric,
 }) => {
-  const [value, setValue] = useState<string>(() => String(getValue()))
+  const [value, setValue] = useState<string>(() => getValue())
 
   const handleOnChange = useCallback<OnChangeCallback>(
     ({ target: { value } }) => {
       setValue(value)
-      updateCellData(rowIndex, columnId, value)
+      updateCellData(rowIndex, columnId, isNumeric ? Number(value) : value)
     },
-    [columnId, rowIndex, updateCellData],
+    [columnId, isNumeric, rowIndex, updateCellData],
   )
 
   return (

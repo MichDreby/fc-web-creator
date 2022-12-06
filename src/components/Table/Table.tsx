@@ -15,6 +15,7 @@ import { Button } from '../Button'
 import styles from './styles.module.css'
 import { withIsRowEditable } from './withIsRowEditable'
 import { TextCell, PositionCell, DateCell, ActionCell } from './cells'
+import { withIsNumeric } from './withIsNumeric'
 
 const columnHelper = createColumnHelper<Player>()
 
@@ -41,7 +42,7 @@ const columns = [
   }),
   columnHelper.accessor('shirt_number', {
     header: 'Shirt Number',
-    cell: withIsRowEditable(TextCell),
+    cell: withIsRowEditable(withIsNumeric(TextCell)),
   }),
   columnHelper.accessor('birthday', {
     header: 'Birthday',
@@ -102,9 +103,9 @@ export const Table: FC<TableProps> = ({ data }) => {
     setTableData([
       ...tableData,
       {
-        first_name: 'First name',
-        last_name: 'Last name',
-        shirt_name: 'Shirt name',
+        first_name: 'First Name',
+        last_name: 'LastName',
+        shirt_name: 'ShirtName',
         position: 'Striker',
         birthday: moment('2000').format(),
         nationality: 'Belarus',

@@ -39,10 +39,7 @@ export const DateCell: FC<CellProps<string>> = ({
           onChange={handleOnChange}
         />
       ) : (
-        <input
-          className={styles.input}
-          value={moment(getValue()).format('L')}
-        />
+        <div className={styles.input}>{moment(getValue()).format('L')}</div>
       )}
     </div>
   )
