@@ -1,6 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { Root, Error, ClubInfo, Squad, Users, Profile, Settings } from '@pages'
+import {
+  Root,
+  Error,
+  ClubInfo,
+  Squad,
+  Users,
+  Profile,
+  Settings,
+  News,
+} from '@pages'
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: '/squad',
         element: <Squad />,
+      },
+      {
+        path: '/news',
+        element: <News />,
       },
       {
         path: '/users',
