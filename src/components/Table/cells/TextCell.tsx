@@ -28,15 +28,19 @@ export const TextCell: FC<CellProps<string> & Partial<WithIsNumeric>> = ({
   const handleOnChange = useCallback<OnChangeCallback>(
     ({ target: { value } }) => {
       setValue(value)
-      updateCellData(rowIndex, columnId, isNumeric ? Number(value) : value)
     },
-    [columnId, isNumeric, rowIndex, updateCellData],
+    [],
   )
+
+  const handleOnBlur = useCallback(() => {
+    updateCellData(rowIndex, columnId, isNumeric ? Number(value) : value)
+  }, [columnId, isNumeric, rowIndex, updateCellData, value])
 
   return (
     <input
       value={value}
       onChange={handleOnChange}
+      onBlur={handleOnBlur}
       className={classNames(
         isRowEditable ? styles.inputEditable : styles.inputNotEditable,
       )}
