@@ -1,17 +1,17 @@
 import { memo, useEffect, useState } from 'react'
 
-import { listAllPlayers } from '@api'
-import { Table } from '@components'
-import { Player } from '@interfaces'
+import { listAllNews } from '@api'
+import { NewsList } from '@components'
+import { News as INews } from '@interfaces'
 
 import styles from './styles.module.css'
 
 export const News = memo(() => {
-  const [data, setData] = useState<null | Player[]>(null)
+  const [data, setData] = useState<null | INews[]>(null)
 
   useEffect(() => {
     const handler = async () => {
-      const { data } = await listAllPlayers()
+      const { data } = await listAllNews()
 
       setData(data)
     }
@@ -19,5 +19,7 @@ export const News = memo(() => {
     handler()
   }, [])
 
-  return <div className={styles.container}>{data && <Table data={data} />}</div>
+  return (
+    <div className={styles.container}>{data && <NewsList data={data} />}</div>
+  )
 })

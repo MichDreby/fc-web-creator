@@ -16,6 +16,7 @@ import {
   faTrashCan,
   faPencil,
   faCheck,
+  faRss,
 } from '@fortawesome/free-solid-svg-icons'
 
 import './styles.css'
@@ -35,6 +36,7 @@ library.add(
   faTrashCan,
   faPencil,
   faCheck,
+  faRss,
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

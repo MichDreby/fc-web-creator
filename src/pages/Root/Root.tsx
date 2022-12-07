@@ -29,6 +29,11 @@ export const Root = () => {
             iconName={'users'}
           />
           <NavbarItem
+            path={'news'}
+            label={'News'}
+            iconName={'rss'}
+          />
+          <NavbarItem
             path={'users'}
             label={'Users'}
             iconName={'people-arrows'}
