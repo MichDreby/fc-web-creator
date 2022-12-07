@@ -9,6 +9,7 @@ import {
   Profile,
   Settings,
   News,
+  NewsDetails,
 } from '@pages'
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: '/news',
         element: <News />,
+      },
+      {
+        path: '/news/:newsId',
+        element: <NewsDetails />,
       },
       {
         path: '/users',
