@@ -1,11 +1,7 @@
 .container {
-  height: 100%;
-  background-color: #f9f9f9;
-  padding: 15px;
-}
-.contentContainer {
   flex: 1;
-  padding: 15px;
+  margin: 15px;
+  padding: 15px 30px;
   border-radius: 10px;
-  background-color: #fefefe;
+  background-color: #fff;
 }
