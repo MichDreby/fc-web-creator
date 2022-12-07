@@ -1,5 +1,4 @@
 import { FC, useCallback, useState } from 'react'
-import moment from 'moment'
 import { map, size } from 'lodash'
 
 import {
@@ -16,18 +15,7 @@ import styles from './styles.module.css'
 import { withIsRowEditable } from './withIsRowEditable'
 import { TextCell, PositionCell, DateCell, ActionCell } from './cells'
 import { withIsNumeric } from './withIsNumeric'
-
-const getDefaultPlayerData = () => ({
-  first_name: 'First Name',
-  last_name: 'LastName',
-  shirt_name: 'ShirtName',
-  position: 'Striker',
-  birthday: moment('2000').format(),
-  nationality: 'Belarus',
-  shirt_number: 99,
-  contract_start: moment('2022').format(),
-  contract_end: moment('2024').format(),
-})
+import { getDefaultPlayerData, getRowId } from './utils'
 
 const columnHelper = createColumnHelper<Player>()
 
@@ -98,19 +86,6 @@ export const Table: FC<TableProps> = ({ data }) => {
     [],
   )
 
-  const table = useReactTable({
-    data: tableData,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    meta: {
-      tableData,
-      setTableData,
-      updateCellData,
-      editableRowIndex,
-      setEditableRowIndex,
-    },
-  })
-
   const handleAddRow = useCallback(() => {
     setTableData([...tableData, getDefaultPlayerData()])
 
@@ -120,6 +95,22 @@ export const Table: FC<TableProps> = ({ data }) => {
       setEditableRowIndex(size(tableData))
     }, 0)
   }, [tableData])
+
+  const table = useReactTable({
+    data: tableData,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getRowId,
+    meta: {
+      tableData,
+      setTableData,
+      updateCellData,
+      editableRowIndex,
+      setEditableRowIndex,
+    },
+  })
+
+  console.log('******\n', 'tableData', tableData)
 
   return (
     <div className={styles.container}>
