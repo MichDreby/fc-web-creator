@@ -12,14 +12,14 @@ import styles from './ActionCell.styles.module.css'
 
 export const ActionCell: FC<CellProps<null>> = ({
   row: { index: rowIndex, original },
+  isRowEditable,
   table: {
     options: {
-      meta: { tableData, setTableData, setEditableRowIndex },
+      meta: { tableData, setTableData, setEditableRowIndex, updateCellData },
     },
   },
-  isRowEditable,
 }) => {
-  const handleDeleteRow = () => {
+  const handleDeleteRow = useCallback(() => {
     const { id } = original
 
     const nextTableData = [...tableData]
@@ -30,13 +30,13 @@ export const ActionCell: FC<CellProps<null>> = ({
     if (id) {
       deletePlayer(id)
     }
-  }
+  }, [original, rowIndex, setTableData, tableData])
 
-  const handleEditRow = () => {
+  const handleEditRow = useCallback(() => {
     setEditableRowIndex(rowIndex)
-  }
+  }, [rowIndex, setEditableRowIndex])
 
-  const handleEditRowComplete = useCallback(() => {
+  const handleEditRowComplete = useCallback(async () => {
     const { id, ...playerData } = original
 
     console.log('******\n', 'playerData', playerData)
@@ -44,11 +44,18 @@ export const ActionCell: FC<CellProps<null>> = ({
     if (id) {
       updatePlayer(id as string, playerData)
     } else {
-      createPlayer(playerData)
+      try {
+        const {
+          data: { id },
+        } = await createPlayer(playerData)
+        updateCellData(rowIndex, 'id', id)
+      } catch (error) {
+        console.log('handleEditRowComplete', error)
+      }
     }
 
     setEditableRowIndex(null)
-  }, [original, setEditableRowIndex])
+  }, [original, rowIndex, setEditableRowIndex, updateCellData])
 
   return (
     <div className={styles.rowActionButtonsContainer}>
