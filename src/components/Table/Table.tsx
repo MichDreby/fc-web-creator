@@ -115,14 +115,23 @@ export const Table: FC<TableProps> = ({ data }) => {
   return (
     <div className={styles.container}>
       <div className={styles.buttonsRowContainer}>
-        <Button label={'+ Add player'} onClick={handleAddRow} />
+        <Button
+          label={'+ Add player'}
+          onClick={handleAddRow}
+        />
       </div>
       <table className={styles.table}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className={styles.headerRow}>
+            <tr
+              key={headerGroup.id}
+              className={styles.headerRow}
+            >
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className={styles.headerCell}>
+                <th
+                  key={header.id}
+                  className={styles.headerCell}
+                >
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -136,9 +145,15 @@ export const Table: FC<TableProps> = ({ data }) => {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className={styles.bodyRow}>
+            <tr
+              key={row.id}
+              className={styles.bodyRow}
+            >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className={styles.bodyCell}>
+                <td
+                  key={cell.id}
+                  className={styles.bodyCell}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

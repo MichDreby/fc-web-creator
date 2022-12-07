@@ -18,7 +18,12 @@ export const withIsRowEditable = (WrappedComponent: FC<CellProps<any>>) => {
     } = props
     const isRowEditable = rowIndex === editableRowIndex
 
-    return <WrappedComponent {...props} isRowEditable={isRowEditable} />
+    return (
+      <WrappedComponent
+        {...props}
+        isRowEditable={isRowEditable}
+      />
+    )
   }
   hoistNonReactStatics(Enhanced, WrappedComponent)
 

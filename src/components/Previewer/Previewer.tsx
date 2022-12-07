@@ -38,11 +38,20 @@ export const Previewer: React.FC<PreviewerProps> = React.memo(({ url }) => {
 
   return (
     <div className={styles.container}>
-      <img src={fileSrc} className={styles.image} />
+      <img
+        src={fileSrc}
+        className={styles.image}
+      />
 
-      <div {...getRootProps()} className={styles.uploadContainer}>
+      <div
+        {...getRootProps()}
+        className={styles.uploadContainer}
+      >
         <input {...getInputProps()} />
-        <FontAwesomeIcon icon={'folder-closed'} className={styles.uploadIcon} />
+        <FontAwesomeIcon
+          icon={'folder-closed'}
+          className={styles.uploadIcon}
+        />
         <p className={styles.uploadLabel}>Upload the club logo here</p>
       </div>
     </div>

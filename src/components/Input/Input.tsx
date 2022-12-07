@@ -27,7 +27,10 @@ export const Input: React.FC<InputProps> = React.memo(
     inputProps,
   }) => (
     <div className={classNames(styles.container, containerStyle ?? null)}>
-      <label htmlFor={fieldId} className={styles.label}>
+      <label
+        htmlFor={fieldId}
+        className={styles.label}
+      >
         {label}
       </label>
       <Field

@@ -14,10 +14,19 @@ interface NavbarItemProps {
 
 export const NavbarItem: FC<NavbarItemProps> = ({ path, label, iconName }) => (
   <li className={styles.container}>
-    <Link to={path} className={styles.link}>
-      <FontAwesomeIcon icon={iconName} className={styles.icon} />
+    <Link
+      to={path}
+      className={styles.link}
+    >
+      <FontAwesomeIcon
+        icon={iconName}
+        className={styles.icon}
+      />
       {label}
-      <FontAwesomeIcon icon={'chevron-right'} className={styles.chevronIcon} />
+      <FontAwesomeIcon
+        icon={'chevron-right'}
+        className={styles.chevronIcon}
+      />
     </Link>
   </li>
 )

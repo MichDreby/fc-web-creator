@@ -76,7 +76,10 @@ export const ActionCell: FC<CellProps<null>> = ({
       )}
 
       <Clickable onClick={handleDeleteRow}>
-        <FontAwesomeIcon icon={'trash-can'} className={styles.actionIcon} />
+        <FontAwesomeIcon
+          icon={'trash-can'}
+          className={styles.actionIcon}
+        />
       </Clickable>
     </div>
   )

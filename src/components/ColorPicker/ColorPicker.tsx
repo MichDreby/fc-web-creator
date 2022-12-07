@@ -36,7 +36,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = React.memo(
           onClick={handlePickerClick}
         />
         {isPickerActive && (
-          <ChromePicker color={color} onChangeComplete={handleChangeColor} />
+          <ChromePicker
+            color={color}
+            onChangeComplete={handleChangeColor}
+          />
         )}
       </div>
     )

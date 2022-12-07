@@ -8,7 +8,7 @@
     "test": "craco test",
     "eject": "craco eject",
     "lint": "npx eslint . --ext .js,.ts,.tsx,.jsx && npx tsc",
-    "lint-fix": "npx eslint --fix . --ext .js,.ts",
+    "lint-fix": "npx eslint --fix . --ext .js,.ts,.tsx,.jsx",
     "prepare": "husky install",
     "client:deploy": "serverless client deploy --no-config-change --no-policy-change --no-cors-change --no-confirm",
     "client:build:deploy": "yarn build && yarn client:deploy",

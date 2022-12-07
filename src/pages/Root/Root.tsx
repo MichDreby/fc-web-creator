@@ -18,14 +18,26 @@ export const Root = () => {
         </div>
 
         <ul className={styles.listContainer}>
-          <NavbarItem path={'info'} label={'Info'} iconName={'circle-info'} />
-          <NavbarItem path={'squad'} label={'Squad'} iconName={'users'} />
+          <NavbarItem
+            path={'info'}
+            label={'Info'}
+            iconName={'circle-info'}
+          />
+          <NavbarItem
+            path={'squad'}
+            label={'Squad'}
+            iconName={'users'}
+          />
           <NavbarItem
             path={'users'}
             label={'Users'}
             iconName={'people-arrows'}
           />
-          <NavbarItem path={'settings'} label={'Settings'} iconName={'gears'} />
+          <NavbarItem
+            path={'settings'}
+            label={'Settings'}
+            iconName={'gears'}
+          />
         </ul>
 
         <div className={styles.profileContainer}>
