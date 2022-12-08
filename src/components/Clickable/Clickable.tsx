@@ -1,18 +1,24 @@
 import React, { FC, ReactElement } from 'react'
 
+import styles from './styles.module.css'
+
 interface ClickableProps {
   children: ReactElement | ReactElement[]
   onClick: () => any
+  stopPropagation?: boolean
 }
 
 export const Clickable: FC<ClickableProps> = React.memo(
-  ({ children, onClick }) => (
+  ({ children, onClick, stopPropagation = false }) => (
     <div
-      style={{
-        cursor: 'pointer',
-        padding: 6,
+      className={styles.container}
+      onClick={(event) => {
+        if (stopPropagation) {
+          event.stopPropagation()
+        }
+
+        onClick()
       }}
-      onClick={onClick}
     >
       {children}
     </div>

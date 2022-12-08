@@ -1,7 +1,7 @@
 import { FC, useCallback } from 'react'
 import { map, random } from 'lodash'
 import moment from 'moment'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { News } from '@interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,14 +21,22 @@ export const NewsList: FC<NewsListProps> = ({ data }) => {
   const handleDelete = useCallback(() => {
     console.log('******\n', 'delete')
   }, [])
+  const navigate = useNavigate()
+
+  const handleNavigateCreator = useCallback(
+    (id: string) => () => {
+      navigate(`/news/${id}`)
+    },
+    [navigate],
+  )
 
   return (
     <div className={styles.container}>
       {map(data, ({ id, title, description, created_at }, index) => {
         return (
-          <Link
+          <Clickable
             key={id}
-            to={`/news/${id}`}
+            onClick={handleNavigateCreator(id as string)}
           >
             <div className={styles.itemContainer}>
               <div
@@ -45,7 +53,10 @@ export const NewsList: FC<NewsListProps> = ({ data }) => {
                 <h3 className={styles.created_at}>
                   {moment(created_at).format('L')}
                 </h3>
-                <Clickable onClick={handleDelete}>
+                <Clickable
+                  onClick={handleDelete}
+                  stopPropagation
+                >
                   <FontAwesomeIcon
                     icon={'trash-can'}
                     className={styles.deleteButton}
@@ -53,7 +64,7 @@ export const NewsList: FC<NewsListProps> = ({ data }) => {
                 </Clickable>
               </div>
             </div>
-          </Link>
+          </Clickable>
         )
       })}
     </div>

@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { capitalize } from 'lodash'
 
-import { Logo, NavbarItem } from '@components'
+import { NavbarItem } from '@components'
 import { getRouteByPath } from '@utils'
 
 import styles from './styles.module.css'
@@ -13,10 +13,6 @@ export const Root = () => {
   return (
     <div className={styles.container}>
       <nav className={styles.navbarContainer}>
-        <div className={styles.logoContainer}>
-          <Logo />
-        </div>
-
         <ul className={styles.listContainer}>
           <NavbarItem
             path={'info'}
