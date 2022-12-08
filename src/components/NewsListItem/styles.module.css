@@ -7,7 +7,7 @@
 }
 .containerCurtain {
   position: absolute;
-  filter: saturate(1%);
+  filter: saturate(50%) grayscale(10%);
   border-radius: 6px;
   top: 0;
   left: 0;
@@ -26,15 +26,15 @@
   font-size: 40px;
   max-height: 50px;
   overflow: hidden;
-  color: #fff;
+  color: #ffab0a;
 }
 .description {
   max-height: 54px;
   overflow: hidden;
-  color: #fff;
+  color: #ffab0a;
 }
 .created_at {
-  color: #fff;
+  color: #ffab0a;
 }
 .deleteButton {
   position: absolute;
