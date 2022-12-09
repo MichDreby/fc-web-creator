@@ -63,14 +63,14 @@ export const ActionCell: FC<CellProps<null>> = ({
         <Clickable onClick={handleEditRowComplete}>
           <FontAwesomeIcon
             icon={'check'}
-            className={classNames(styles.editCompleteIcon)}
+            className={classNames(styles.editCompleteIcon, styles.leftIcon)}
           />
         </Clickable>
       ) : (
         <Clickable onClick={handleEditRow}>
           <FontAwesomeIcon
             icon={'pencil'}
-            className={classNames(styles.actionIcon)}
+            className={classNames(styles.actionIcon, styles.leftIcon)}
           />
         </Clickable>
       )}

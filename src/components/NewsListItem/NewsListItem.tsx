@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { News } from '@interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { deleteNews } from '@api'
 
 import { Clickable } from '../Clickable'
 
@@ -23,9 +24,13 @@ export const NewsListItem: FC<NewsListItemProps> = ({
 }) => {
   const navigate = useNavigate()
 
-  const handleDelete = useCallback(() => {
-    console.log('******\n', 'delete')
-  }, [])
+  const handleDelete = useCallback(async () => {
+    try {
+      await deleteNews(id)
+    } catch (error) {
+      console.log('******\n', 'handleDelete, error', error)
+    }
+  }, [id])
 
   const handleNavigate = useCallback(() => {
     navigate(`/news/${id}`, {
@@ -52,9 +57,7 @@ export const NewsListItem: FC<NewsListItemProps> = ({
         <div className={styles.itemContent}>
           <h1 className={styles.title}>{title}</h1>
           <h3 className={styles.description}>{description}</h3>
-          <h3 className={styles.created_at}>
-            {moment(created_at).format('L')}
-          </h3>
+          <h3 className={styles.date}>{moment(created_at).format('L')}</h3>
           <Clickable
             onClick={handleDelete}
             stopPropagation

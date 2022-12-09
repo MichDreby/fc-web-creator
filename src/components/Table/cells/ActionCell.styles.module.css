@@ -2,8 +2,13 @@
   display: flex;
 }
 .actionIcon {
-  color: #5898fa
+  color: #5898fa;
+  height: 14px;
+  width: 14px;
 }
 .editCompleteIcon {
   color: #30ae4a
+}
+.leftIcon {
+  margin-right: 15px;
 }

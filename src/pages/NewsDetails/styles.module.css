@@ -1,7 +1,42 @@
 .container {
-  flex: 1;
+  flex: 1 1;
   margin: 15px;
-  padding: 15px 30px;
+  padding: 20px 30px;
   border-radius: 10px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position:relative;
+}
+.input {
+  border: none;
+  resize: none;
+}
+.input:focus {
+  outline: none
+}
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: .004em;
+  margin-bottom: 15px;
+  height: 46px;
+}
+.date {
+  margin-bottom: 40px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.description {
+  flex: 1;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 400;
+  padding-bottom: 50px;
+  padding-right: 20px;
+}
+.saveButton {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
 }

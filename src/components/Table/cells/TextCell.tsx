@@ -1,15 +1,11 @@
 import classNames from 'classnames'
 import { FC, useState, useCallback } from 'react'
 
+import { OnChangeCallback } from '@types'
+
 import { CellProps, WithIsNumeric } from '../types'
 
 import styles from './TextCell.styles.module.css'
-
-export type OnChangeCallback = (event: {
-  target: {
-    value: string
-  }
-}) => void
 
 export const TextCell: FC<CellProps<string> & Partial<WithIsNumeric>> = ({
   getValue,
