@@ -4,7 +4,8 @@ import { Network } from '@services'
 const baseUrl =
   'https://9w38a02270.execute-api.eu-west-1.amazonaws.com/dev/news'
 
-export const createNews = (data: News) => Network.post<News>(`${baseUrl}`, data)
+export const createNews = (data: Omit<News, 'id' | 'created_at'>) =>
+  Network.post<News>(`${baseUrl}`, data)
 
 export const listAllNews = () => Network.get<News[]>(`${baseUrl}`)
 

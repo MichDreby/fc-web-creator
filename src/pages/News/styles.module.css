@@ -4,4 +4,10 @@
   padding: 15px 30px;
   border-radius: 10px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.buttonContainer {
+  align-self: flex-end;
+  margin-bottom: 15px;
 }

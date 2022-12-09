@@ -19,7 +19,6 @@ interface NewsListItemProps {
 }
 
 export const NewsListItem: FC<NewsListItemProps> = ({
-  item,
   item: { id, title, description, created_at },
 }) => {
   const navigate = useNavigate()
@@ -35,10 +34,11 @@ export const NewsListItem: FC<NewsListItemProps> = ({
   const handleNavigate = useCallback(() => {
     navigate(`/news/${id}`, {
       state: {
-        item,
+        id,
+        created_at,
       },
     })
-  }, [id, item, navigate])
+  }, [created_at, id, navigate])
 
   return (
     <Clickable

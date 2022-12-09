@@ -6,7 +6,7 @@ import moment from 'moment'
 import { News } from '@interfaces'
 import { OnChangeCallback } from '@types'
 import { Button } from '@components'
-import { updateNews, retrieveNews } from '@api'
+import { updateNews, retrieveNews, createNews } from '@api'
 
 import styles from './styles.module.css'
 
@@ -14,10 +14,9 @@ type NewsDetailsProps = News
 
 export const NewsDetails: FC<Partial<NewsDetailsProps>> = memo(() => {
   const {
-    state: {
-      item: { id, created_at },
-    },
+    state: { id = null, created_at = null },
   } = useLocation()
+
   const [isLoaded, setIsLoaded] = useState(false)
   const [titleValue, setTitleValue] = useState('')
   const [descriptionValue, setDescriptionValue] = useState('')
@@ -25,13 +24,18 @@ export const NewsDetails: FC<Partial<NewsDetailsProps>> = memo(() => {
   useEffect(() => {
     const handler = async () => {
       try {
-        const {
-          data: { title, description },
-        } = await retrieveNews(id)
+        if (id) {
+          const {
+            data: { title, description },
+          } = await retrieveNews(id)
 
+          setTitleValue(title)
+          setDescriptionValue(description)
+        } else {
+          setTitleValue('Enter news title')
+          setDescriptionValue('Write some description')
+        }
         setIsLoaded(true)
-        setTitleValue(title)
-        setDescriptionValue(description)
       } catch (error) {
         console.log('******\n', 'NewsDetails - error', error)
       }
@@ -55,10 +59,17 @@ export const NewsDetails: FC<Partial<NewsDetailsProps>> = memo(() => {
   )
 
   const handleSave = useCallback(() => {
-    updateNews(id, {
-      title: titleValue,
-      description: descriptionValue,
-    })
+    if (id) {
+      updateNews(id, {
+        title: titleValue,
+        description: descriptionValue,
+      })
+    } else {
+      createNews({
+        title: titleValue,
+        description: descriptionValue,
+      })
+    }
   }, [descriptionValue, id, titleValue])
 
   return (
@@ -70,9 +81,11 @@ export const NewsDetails: FC<Partial<NewsDetailsProps>> = memo(() => {
             className={classNames(styles.title, styles.input)}
             onChange={handleTitleChange}
           />
-          <p className={styles.date}>
-            {`written on ${moment(created_at).format('LL')}`}
-          </p>
+          {created_at && (
+            <p className={styles.date}>
+              {`written on ${moment(created_at).format('LL')}`}
+            </p>
+          )}
           <textarea
             value={descriptionValue}
             className={classNames(styles.description, styles.input)}
