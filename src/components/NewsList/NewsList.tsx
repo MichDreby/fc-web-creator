@@ -9,15 +9,18 @@ import styles from './styles.module.css'
 
 interface NewsListProps {
   data: News[]
+  deleteNewsItem: (deletedId: string) => void
 }
 
-export const NewsList: FC<NewsListProps> = ({ data }) => {
+export const NewsList: FC<NewsListProps> = ({ data, deleteNewsItem }) => {
   return (
     <div className={styles.container}>
-      {map(data, (item) => (
+      {map(data, (item, index) => (
         <NewsListItem
           key={item?.id}
           item={item}
+          index={index}
+          deleteNewsItem={deleteNewsItem}
         />
       ))}
     </div>

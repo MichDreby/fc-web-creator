@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { filter } from 'lodash'
 
 import { listAllNews } from '@api'
 import { Button, NewsList } from '@components'
@@ -27,6 +28,13 @@ export const News = memo(() => {
     })
   }, [navigate])
 
+  const deleteNewsItem = useCallback(
+    (deletedId: string) => {
+      setData(filter(data, ({ id }) => id !== deletedId))
+    },
+    [data],
+  )
+
   return (
     <div className={styles.container}>
       <Button
@@ -34,7 +42,12 @@ export const News = memo(() => {
         onClick={handleCreateNews}
         containerStyle={styles.buttonContainer}
       />
-      {data && <NewsList data={data} />}
+      {data && (
+        <NewsList
+          data={data}
+          deleteNewsItem={deleteNewsItem}
+        />
+      )}
     </div>
   )
 })
