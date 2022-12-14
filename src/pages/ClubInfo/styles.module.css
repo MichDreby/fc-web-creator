@@ -17,6 +17,7 @@
   border-radius: 10px;
 
   background-color: #fefefe;
+  position: relative
 }
 .rightContainer {
   width: 300px;
@@ -37,6 +38,8 @@
 .inputContainer {
   margin-bottom: 30px;
 }
-.buttonContainer {
-  margin-top: 50px;
+.submitBtnContainer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }

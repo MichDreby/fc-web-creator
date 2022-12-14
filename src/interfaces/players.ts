@@ -1,4 +1,4 @@
-export type Player = {
+export interface Player {
   id?: string
   first_name: string
   last_name: string

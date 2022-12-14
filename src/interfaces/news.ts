@@ -1,4 +1,4 @@
-export type News = {
+export interface News {
   id: string
   title: string
   description: string

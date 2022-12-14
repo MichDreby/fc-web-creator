@@ -1,7 +1,7 @@
 export enum CLUB_INFO_FORM_FIELDS {
-  NAME = 'NAME',
-  VENUE = 'VENUE',
-  FOUNDED = 'FOUNDED',
-  CLUB_COLORS = 'CLUB_COLORS',
-  WEBSITE = 'WEBSITE',
+  NAME = 'name',
+  VENUE = 'venue',
+  FOUNDED = 'founded',
+  CLUB_COLORS = 'club_colors',
+  WEBSITE = 'website',
 }
