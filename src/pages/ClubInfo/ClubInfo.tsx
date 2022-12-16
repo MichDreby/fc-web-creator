@@ -6,23 +6,20 @@ import { isArray } from 'lodash'
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
 import { Button, ColorPickerInput, Input, Previewer } from '@components'
 import { ClubInfoFormValues } from '@types'
-import { retrieveTeam, retrieveEmblemUrl, updateTeam, uploadEmblem } from '@api'
+import { retrieveTeam, updateTeam, uploadEmblem } from '@api'
 import { Team } from '@interfaces'
 
 import styles from './styles.module.css'
 
 export const ClubInfo: React.FC = React.memo(() => {
   const [info, setInfo] = useState<null | Team>(null)
-  const [emblemUrl, setEmblemUrl] = useState<null | string>(null)
 
   useEffect(() => {
     const handler = async () => {
       try {
-        const { data: infoResponse } = await retrieveTeam()
-        const { data: emblemUrl } = await retrieveEmblemUrl()
+        const { data } = await retrieveTeam()
 
-        setInfo(infoResponse)
-        setEmblemUrl(emblemUrl)
+        setInfo(data)
       } catch (error) {
         console.log('******\n', 'error', error)
       }
@@ -30,7 +27,8 @@ export const ClubInfo: React.FC = React.memo(() => {
     handler()
   }, [])
 
-  const { name, founded, club_colors, venue, website } = (info || {}) as Team
+  const { name, founded, club_colors, venue, website, emblemUrl } = (info ||
+    {}) as Team
 
   const handleUploadEmblem = useCallback(async (file: File) => {
     try {
@@ -131,7 +129,7 @@ export const ClubInfo: React.FC = React.memo(() => {
           <div className={styles.rightContainer}>
             <Previewer
               onUpload={handleUploadEmblem}
-              url={emblemUrl as string}
+              url={emblemUrl}
             />
           </div>
         </div>

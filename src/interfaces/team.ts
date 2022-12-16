@@ -5,4 +5,5 @@ export interface Team {
   club_colors: string[]
   venue: string
   website: string
+  emblemUrl: string
 }
