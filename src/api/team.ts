@@ -6,7 +6,7 @@ const baseUrl =
 
 export const createTeam = (data: Team) => Network.post<Team>(`${baseUrl}`, data)
 
-export const listAllTeams = () => Network.get<Team[]>(baseUrl)
+export const retrieveTeam = () => Network.get<Team>(baseUrl)
 
-export const updateTeam = (id: string, data: Partial<Team>) =>
-  Network.patch<Partial<Team>>(`${baseUrl}/${id}`, data)
+export const updateTeam = (data: Partial<Team>) =>
+  Network.patch<Partial<Team>>(`${baseUrl}`, data)

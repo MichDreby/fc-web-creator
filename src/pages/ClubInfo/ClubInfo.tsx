@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Formik, Form } from 'formik'
 import classNames from 'classnames'
 import { isArray } from 'lodash'
@@ -6,21 +6,23 @@ import { isArray } from 'lodash'
 import { CLUB_INFO_FORM_FIELDS } from '@constants'
 import { Button, ColorPickerInput, Input, Previewer } from '@components'
 import { ClubInfoFormValues } from '@types'
-import { listAllTeams, updateTeam } from '@api'
+import { retrieveTeam, retrieveEmblemUrl, updateTeam, uploadEmblem } from '@api'
 import { Team } from '@interfaces'
 
 import styles from './styles.module.css'
 
 export const ClubInfo: React.FC = React.memo(() => {
   const [info, setInfo] = useState<null | Team>(null)
+  const [emblemUrl, setEmblemUrl] = useState<null | string>(null)
+
   useEffect(() => {
     const handler = async () => {
       try {
-        const {
-          data: { 0: infoResponse },
-        } = await listAllTeams()
+        const { data: infoResponse } = await retrieveTeam()
+        const { data: emblemUrl } = await retrieveEmblemUrl()
 
         setInfo(infoResponse)
+        setEmblemUrl(emblemUrl)
       } catch (error) {
         console.log('******\n', 'error', error)
       }
@@ -28,8 +30,15 @@ export const ClubInfo: React.FC = React.memo(() => {
     handler()
   }, [])
 
-  const { id, name, founded, club_colors, venue, website } = (info ||
-    {}) as Team
+  const { name, founded, club_colors, venue, website } = (info || {}) as Team
+
+  const handleUploadEmblem = useCallback(async (file: File) => {
+    try {
+      uploadEmblem(file)
+    } catch (error) {
+      console.log('******\n', 'error upload', error)
+    }
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -54,7 +63,7 @@ export const ClubInfo: React.FC = React.memo(() => {
                       : [values.club_colors],
                   }
 
-                  await updateTeam(id as string, nextInfo)
+                  await updateTeam(nextInfo)
                 } catch (error) {
                   console.log('******\n', 'onSubmit, error', error)
                 }
@@ -120,7 +129,10 @@ export const ClubInfo: React.FC = React.memo(() => {
             </Formik>
           </div>
           <div className={styles.rightContainer}>
-            <Previewer />
+            <Previewer
+              onUpload={handleUploadEmblem}
+              url={emblemUrl as string}
+            />
           </div>
         </div>
       )}
