@@ -11,6 +11,7 @@ const defaultUrl =
 
 export interface PreviewerProps {
   url?: string
+  onUpload: (file: File) => void
 }
 
 type UploadedFile = File & {
@@ -18,42 +19,50 @@ type UploadedFile = File & {
 }
 
 // todo: rename this component
-export const Previewer: React.FC<PreviewerProps> = React.memo(({ url }) => {
-  const [uploadedImage, setUploadedImage] = useState<UploadedFile | null>(null)
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: {
-      'image/*': [],
-    },
+export const Previewer: React.FC<PreviewerProps> = React.memo(
+  ({ url, onUpload }) => {
+    console.log('******\n', 'url', url)
 
-    onDrop: (acceptedFiles: File[]) => {
-      const uploadedImage = head(acceptedFiles) as File
-      setUploadedImage({
-        ...uploadedImage,
-        src: URL.createObjectURL(uploadedImage),
-      })
-    },
-  })
+    const [uploadedImage, setUploadedImage] = useState<UploadedFile | null>(
+      null,
+    )
+    const { getRootProps, getInputProps } = useDropzone({
+      accept: {
+        'image/*': [],
+      },
 
-  const fileSrc = url || uploadedImage?.src || defaultUrl
+      onDrop: (acceptedFiles: File[]) => {
+        console.log('******\n', 'acceptedFiles', acceptedFiles)
+        const uploadedImage = head(acceptedFiles) as File
+        setUploadedImage({
+          ...uploadedImage,
+          src: URL.createObjectURL(uploadedImage),
+        })
+        onUpload(uploadedImage)
+      },
+    })
 
-  return (
-    <div className={styles.container}>
-      <img
-        src={fileSrc}
-        className={styles.image}
-      />
+    const fileSrc = uploadedImage?.src || url || defaultUrl
 
-      <div
-        {...getRootProps()}
-        className={styles.uploadContainer}
-      >
-        <input {...getInputProps()} />
-        <FontAwesomeIcon
-          icon={'folder-closed'}
-          className={styles.uploadIcon}
+    return (
+      <div className={styles.container}>
+        <img
+          src={fileSrc}
+          className={styles.image}
         />
-        <p className={styles.uploadLabel}>Upload the club logo here</p>
+
+        <div
+          {...getRootProps()}
+          className={styles.uploadContainer}
+        >
+          <input {...getInputProps()} />
+          <FontAwesomeIcon
+            icon={'folder-closed'}
+            className={styles.uploadIcon}
+          />
+          <p className={styles.uploadLabel}>Upload the club logo here</p>
+        </div>
       </div>
-    </div>
-  )
-})
+    )
+  },
+)
