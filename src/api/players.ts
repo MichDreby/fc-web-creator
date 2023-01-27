@@ -1,8 +1,8 @@
-import { BASE_URL } from '@constants'
+import { API_URL } from '@constants'
 import { Player } from '@interfaces'
 import { Network } from '@services'
 
-const playersUrl = `${BASE_URL}/players`
+const playersUrl = `${API_URL}/players`
 
 export const createPlayer = (data: Player) =>
   Network.post<Player>(`${playersUrl}`, data)

@@ -1,8 +1,8 @@
-import { BASE_URL } from '@constants'
+import { API_URL } from '@constants'
 import { News } from '@interfaces'
 import { Network } from '@services'
 
-const newsUrl = `${BASE_URL}/news`
+const newsUrl = `${API_URL}/news`
 
 export const createNews = (data: Omit<News, 'id' | 'created_at'>) =>
   Network.post<News>(newsUrl, data)

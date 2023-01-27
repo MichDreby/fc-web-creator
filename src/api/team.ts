@@ -1,8 +1,8 @@
-import { BASE_URL } from '@constants'
+import { API_URL } from '@constants'
 import { Team } from '@interfaces'
 import { Network } from '@services'
 
-const teamUrl = `${BASE_URL}/team`
+const teamUrl = `${API_URL}/team`
 
 export const createTeam = (data: Team) => Network.post<Team>(`${teamUrl}`, data)
 

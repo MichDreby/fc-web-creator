@@ -6,4 +6,4 @@ export enum CLUB_INFO_FORM_FIELDS {
   WEBSITE = 'website',
 }
 
-export const BASE_URL = 'https://drebydigitals.com'
+export const API_URL = 'https://api.drebydigitals.com'

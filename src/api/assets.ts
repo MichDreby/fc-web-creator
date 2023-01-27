@@ -1,7 +1,7 @@
-import { BASE_URL } from '@constants'
+import { API_URL } from '@constants'
 import { Network } from '@services'
 
-const assetsUrl = `${BASE_URL}/assets`
+const assetsUrl = `${API_URL}/assets`
 const emblemUrl = `${assetsUrl}/emblem`
 
 export const uploadEmblem = (data: File) =>
