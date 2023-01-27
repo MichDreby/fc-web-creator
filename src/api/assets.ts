@@ -1,13 +1,14 @@
+import { BASE_URL } from '@constants'
 import { Network } from '@services'
 
-const baseUrl =
-  'https://6m8scp0my4.execute-api.eu-west-1.amazonaws.com/dev/assets'
+const assetsUrl = `${BASE_URL}/assets`
+const emblemUrl = `${assetsUrl}/emblem`
 
 export const uploadEmblem = (data: File) =>
-  Network.post(`${baseUrl}/emblem`, data, {
+  Network.post(`${emblemUrl}`, data, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   })
 
-export const retrieveEmblemUrl = () => Network.get<string>(`${baseUrl}/emblem`)
+export const retrieveEmblemUrl = () => Network.get<string>(`${emblemUrl}`)
