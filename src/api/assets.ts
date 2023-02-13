@@ -1,7 +1,7 @@
-import { API_URL } from '@constants'
 import { Network } from '@services'
 
-const assetsUrl = `${API_URL}/assets`
+const { REACT_APP_API_URL } = process.env
+const assetsUrl = `${REACT_APP_API_URL}/assets`
 const emblemUrl = `${assetsUrl}/emblem`
 
 export const uploadEmblem = (file: File) => {

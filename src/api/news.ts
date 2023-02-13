@@ -1,8 +1,8 @@
-import { API_URL } from '@constants'
 import { News } from '@interfaces'
 import { Network } from '@services'
 
-const newsUrl = `${API_URL}/news`
+const { REACT_APP_API_URL } = process.env
+const newsUrl = `${REACT_APP_API_URL}/news`
 
 export const createNews = (data: Omit<News, 'id' | 'created_at'>) =>
   Network.post<News>(newsUrl, data)

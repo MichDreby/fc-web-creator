@@ -1,8 +1,8 @@
-import { API_URL } from '@constants'
 import { Player } from '@interfaces'
 import { Network } from '@services'
 
-const playersUrl = `${API_URL}/players`
+const { REACT_APP_API_URL } = process.env
+const playersUrl = `${REACT_APP_API_URL}/players`
 
 export const createPlayer = (data: Player) =>
   Network.post<Player>(`${playersUrl}`, data)

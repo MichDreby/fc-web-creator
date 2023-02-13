@@ -5,6 +5,3 @@ export enum CLUB_INFO_FORM_FIELDS {
   CLUB_COLORS = 'club_colors',
   WEBSITE = 'website',
 }
-
-export const API_URL = 'https://api.drebydigitals.com'
-// export const API_URL = 'http://localhost:3001'

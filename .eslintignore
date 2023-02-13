@@ -4,4 +4,4 @@ build
 plugins
 
 # Sensetive
-*.env
+*.env*
